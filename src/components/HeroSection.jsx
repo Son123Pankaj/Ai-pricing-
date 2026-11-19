@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   ArrowUpRight, 
   Phone, 
@@ -9,6 +9,8 @@ import {
   CheckCircle2, 
   ShieldCheck 
 } from 'lucide-react';
+import VoiceLibrary from './VoiceLibrary';
+import heroCallerImg from '../assets/avyukta-ai-caller-hero.png';
 import { getAssetUrl } from '../utils/assetUrl';
 
 const FEATURE_CHIPS = [
@@ -18,32 +20,7 @@ const FEATURE_CHIPS = [
   { id: 'whatsapp-comm', label: 'WhatsApp Communication', icon: MessageSquare }
 ];
 
-const CHANNELS = [
-  { 
-    id: 'Voice', 
-    label: 'Voice', 
-    desc: 'Qualify leads and handle inbound calls with autonomous conversational AI voice agents with sub-500ms cadence.' 
-  },
-  { 
-    id: 'WhatsApp', 
-    label: 'WhatsApp', 
-    desc: 'Continue the conversation with Meta-integrated WhatsApp automated follow-ups and payment alerts.' 
-  },
-  { 
-    id: 'Email', 
-    label: 'Email', 
-    desc: 'Send call transcripts, summaries, and action steps directly from the unified lead workspace.' 
-  },
-  { 
-    id: 'Dialer', 
-    label: 'Dialer', 
-    desc: 'Connect leads and teammates using the enterprise cloud auto dialer platform.' 
-  }
-];
-
 export default function HeroSection({ navigateTo }) {
-  const [activeChannel, setActiveChannel] = useState('Voice');
-
   const handleNav = (e, path) => {
     e.preventDefault();
     if (path.startsWith('/#') || path.startsWith('#')) {
@@ -63,153 +40,131 @@ export default function HeroSection({ navigateTo }) {
     }
   };
 
-  const currentChannel = CHANNELS.find(c => c.id === activeChannel) || CHANNELS[0];
+  const callerImgSrc = heroCallerImg || getAssetUrl('/avyukta-ai-caller-hero.png');
 
   return (
     <section 
       id="hero" 
-      className="landing-hero avyukta-hero-section" 
+      className="hero-voice-studio-section" 
       aria-label="Avyukta Intellicall Enterprise AI Communication Hero"
     >
-      {/* Exact Reference Hero Image (Right side, seamlessly blended) */}
-      <img 
-        className="landing-hero-scene hero-caller-image" 
-        src={getAssetUrl('/hero-premium.webp')} 
-        alt="Avyukta AI Caller Professional with Headset" 
-        fetchPriority="high" 
-        loading="eager" 
-        decoding="async"
-      />
+      {/* Decorative Subtle Background Grid & Glows */}
+      <div className="hero-grid-pattern" aria-hidden="true" />
+      <div className="hero-halo-light hero-halo-left" aria-hidden="true" />
+      <div className="hero-halo-light hero-halo-right" aria-hidden="true" />
 
-      {/* Futuristic Electric Circuit Pulse Overlay on Headset / Face */}
-      <div className="ai-face-circuit-overlay" aria-hidden="true">
-        <svg className="electric-circuit-svg" viewBox="0 0 360 440" fill="none">
-          <path 
-            d="M 60 160 L 110 160 L 145 195 L 200 195 L 230 225 L 280 225" 
-            stroke="#00f2fe" 
-            strokeWidth="2" 
-            strokeDasharray="6 4" 
-            className="electric-circuit-path circuit-pulse-1" 
-          />
-          <path 
-            d="M 100 120 L 140 120 L 175 155 L 225 155 L 255 185 L 305 185" 
-            stroke="#38bdf8" 
-            strokeWidth="1.5" 
-            strokeDasharray="8 6" 
-            className="electric-circuit-path circuit-pulse-2" 
-          />
-          <path 
-            d="M 130 240 L 170 240 L 205 275 L 265 275 L 295 305" 
-            stroke="#10b981" 
-            strokeWidth="1.5" 
-            strokeDasharray="5 5" 
-            className="electric-circuit-path circuit-pulse-3" 
-          />
-          <circle cx="60" cy="160" r="3.5" fill="#00f2fe" className="circuit-node" />
-          <circle cx="145" cy="195" r="3.5" fill="#00f2fe" className="circuit-node" />
-          <circle cx="230" cy="225" r="4" fill="#38bdf8" className="circuit-node node-active" />
-          <circle cx="280" cy="225" r="3" fill="#00f2fe" className="circuit-node" />
-          <circle cx="140" cy="120" r="3" fill="#38bdf8" className="circuit-node" />
-          <circle cx="225" cy="155" r="4" fill="#38bdf8" className="circuit-node node-active" />
-          <circle cx="205" cy="275" r="3.5" fill="#10b981" className="circuit-node" />
-          <circle cx="265" cy="275" r="3" fill="#10b981" className="circuit-node" />
-        </svg>
-      </div>
-
-      {/* Main Content Wrap */}
-      <div className="landing-wrap landing-hero-content hero-inner-container">
-        <div className="hero-content-col">
+      <div className="hero-content-container">
+        <div className="hero-two-col-layout">
           
-          {/* Top Badge */}
-          <p className="landing-kicker hero-badge-pill" role="status">
-            <span className="kicker-dot" aria-hidden="true" />
-            <span className="hero-badge-text">AI-POWERED BUSINESS COMMUNICATION</span>
-          </p>
+          {/* ========================================================= */}
+          {/* 50% LEFT COLUMN: Content, Headline, Chips, CTAs, Trust   */}
+          {/* ========================================================= */}
+          <div className="hero-left-col">
+            
+            {/* Top AI Badge */}
+            <div className="hero-top-badge" role="status">
+              <span className="hero-badge-dot" aria-hidden="true" />
+              <span className="hero-badge-title">AI-POWERED BUSINESS COMMUNICATION</span>
+            </div>
 
-          {/* Main Heading */}
-          <h1 className="hero-main-heading">
-            Smarter Calls.{' '}
-            <em className="hero-heading-highlight">
-              Stronger Customer Connections.
-            </em>
-          </h1>
+            {/* Main Headline */}
+            <h1 className="hero-title">
+              Smarter Calls.{' '}
+              <span className="hero-title-accent">
+                Stronger Customer Connections.
+              </span>
+            </h1>
 
-          {/* Description */}
-          <p className="hero-lead-text hero-description-text">
-            Bring AI Voice Calling, Cloud Dialers, WhatsApp and CRM together in one 
-            connected communication platform. Engage leads, manage customer conversations 
-            and simplify follow-ups with Avyukta Intellicall.
-          </p>
+            {/* Description */}
+            <p className="hero-desc">
+              Bring AI Voice Calling, Cloud Dialers, WhatsApp and CRM together in one 
+              connected communication platform. Engage leads, manage customer conversations 
+              and simplify follow-ups with Avyukta Intellicall.
+            </p>
 
-          {/* Feature Highlights: 4 Feature Chips */}
-          <div className="hero-feature-chips-grid" role="list" aria-label="Key Communication Capabilities">
-            {FEATURE_CHIPS.map(chip => (
-              <div key={chip.id} className="hero-feature-chip" role="listitem">
-                <div className="hero-chip-icon-box" aria-hidden="true">
-                  <chip.icon size={16} />
+            {/* Four Feature Chips */}
+            <div className="hero-feature-chips" role="list" aria-label="Core Capabilities">
+              {FEATURE_CHIPS.map(chip => (
+                <div key={chip.id} className="hero-chip-item" role="listitem">
+                  <span className="hero-chip-icon" aria-hidden="true">
+                    <chip.icon size={16} />
+                  </span>
+                  <span className="hero-chip-text">{chip.label}</span>
                 </div>
-                <span className="hero-chip-label">{chip.label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Actions */}
-          <div className="landing-actions hero-cta-actions-row">
-            <a 
-              href="/#pricing"
-              className="landing-button hero-btn-primary"
-              onClick={e => handleNav(e, '/#pricing')}
-              aria-label="Explore AI Solutions"
-            >
-              <span>Explore AI Solutions</span>
-              <ArrowUpRight size={18} className="hero-btn-arrow-icon" />
-            </a>
-
-            <a 
-              href="tel:+918560000600"
-              className="landing-button secondary hero-btn-secondary"
-              aria-label="Talk to an Expert on +91 85600 00600"
-              title="Call +91 85600 00600"
-            >
-              <Phone size={17} className="hero-btn-phone-icon" />
-              <span>Talk to an Expert</span>
-            </a>
-          </div>
-
-          {/* SLA and Carrier Trust Indicators */}
-          <div className="hero-trust-indicators" aria-label="Service highlights">
-            <div className="trust-indicator-item">
-              <CheckCircle2 size={15} className="trust-icon" />
-              <span>Sub-500ms Turn Cadence</span>
+              ))}
             </div>
-            <div className="trust-indicator-item">
-              <CheckCircle2 size={15} className="trust-icon" />
-              <span>Billed on Connected Calls Only</span>
-            </div>
-            <div className="trust-indicator-item">
-              <ShieldCheck size={15} className="trust-icon" />
-              <span>99.99% Carrier Grade Telephony</span>
-            </div>
-          </div>
 
-          {/* Interactive Multi-channel Switching Strip */}
-          <div className="landing-hero-channels" role="tablist" aria-label="Explore communication channels">
-            {CHANNELS.map(ch => (
-              <button 
-                key={ch.id} 
-                type="button" 
-                role="tab"
-                aria-selected={activeChannel === ch.id}
-                className={activeChannel === ch.id ? 'active' : ''} 
-                onClick={() => setActiveChannel(ch.id)}
+            {/* CTA Buttons */}
+            <div className="hero-cta-group">
+              <a 
+                href="/#pricing" 
+                className="hero-primary-cta"
+                onClick={e => handleNav(e, '/#pricing')}
+                aria-label="Explore AI Solutions"
               >
-                {ch.label}
-              </button>
-            ))}
+                <span>Explore AI Solutions</span>
+                <ArrowUpRight size={17} />
+              </a>
+
+              <a 
+                href="tel:+918560000600"
+                className="hero-secondary-cta"
+                aria-label="Talk to an Expert on +91 85600 00600"
+                title="Call +91 85600 00600"
+              >
+                <Phone size={16} />
+                <span>Talk to an Expert</span>
+              </a>
+            </div>
+
+            {/* Trust Highlights */}
+            <div className="hero-trust-row" aria-label="Service highlights">
+              <div className="hero-trust-tag">
+                <CheckCircle2 size={15} />
+                <span>Sub-500ms Turn Cadence</span>
+              </div>
+              <div className="hero-trust-tag">
+                <CheckCircle2 size={15} />
+                <span>Billed on Connected Calls Only</span>
+              </div>
+              <div className="hero-trust-tag">
+                <ShieldCheck size={15} />
+                <span>99.99% Carrier Grade Telephony</span>
+              </div>
+            </div>
+
           </div>
-          <p className="landing-channel-detail" aria-live="polite">
-            {currentChannel.desc}
-          </p>
+
+          {/* ========================================================= */}
+          {/* 50% RIGHT COLUMN: Layered Female AI Caller & Voice Studio */}
+          {/* ========================================================= */}
+          <div className="hero-right-col">
+            <div className="hero-stage-stack">
+              
+              {/* Layer 1: Circular Glowing Teal Halo behind Girl */}
+              <div className="hero-girl-halo" aria-hidden="true" />
+
+              {/* Layer 2: Female AI Caller Image (Upper-Right) */}
+              <div className="hero-girl-frame">
+                <img 
+                  src={callerImgSrc}
+                  alt="Avyukta AI Caller Specialist with Headset"
+                  className="hero-girl-img"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </div>
+
+              {/* Layer 3: Curved Glowing Voice Studio Card (Below & Layered in Front) */}
+              <div id="voice-samples" className="hero-voice-studio-wrap">
+                <div className="voice-studio-decorative-tilt" aria-hidden="true" />
+                <div className="voice-studio-card-inner">
+                  <VoiceLibrary navigateTo={navigateTo} />
+                </div>
+              </div>
+
+            </div>
+          </div>
 
         </div>
       </div>

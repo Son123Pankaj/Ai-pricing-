@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Headphones } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import PlanCards from '../components/PlanCards';
 import WhyAvyuktaSection from '../components/WhyAvyuktaSection';
@@ -7,7 +7,6 @@ import DynamicPricingSection from '../components/DynamicPricingSection';
 import DualMarquee from '../components/DualMarquee';
 import AutomationShowcase from '../components/AutomationShowcase';
 import IndustriesSection from '../components/IndustriesSection';
-import VoiceLibrary from '../components/VoiceLibrary';
 import FaqSection from '../components/FaqSection';
 import { Eyebrow, BottomCta } from '../components/StudioParts';
 import { CUSTOMER_FAQS } from '../data/offer';
@@ -43,7 +42,7 @@ export default function HomePage({ navigateTo }) {
       <IndustriesSection navigateTo={navigateTo} />
 
       {/* 6. REMAINING CONTENT & ESSENTIAL CLOSING (Voice Library Listen, FAQ, Bottom CTA) */}
-      <section className="studio-section sample-section" id="voice-samples">
+      <section className="studio-section sample-section" id="voice-samples-suite">
         <div className="studio-container sample-section-grid">
           <div>
             <Eyebrow>LISTEN BEFORE YOU COMMIT</Eyebrow>
@@ -58,7 +57,21 @@ export default function HomePage({ navigateTo }) {
               View pricing details <ArrowUpRight size={17} />
             </a>
           </div>
-          <VoiceLibrary navigateTo={navigateTo} />
+          <div className="voice-studio-jump-card">
+            <div className="jump-card-pill">
+              <Headphones size={15} />
+              <span>THE VOICE STUDIO</span>
+            </div>
+            <h3>Test all 4 Voice Tiers in the Voice Studio above</h3>
+            <p>Experience real-time speech cadence, audio waveforms, duration seeking, and tone variation for Bronze, Silver, Gold, and Platinum voice models.</p>
+            <a 
+              className="studio-btn studio-btn-primary" 
+              href="/#voice-samples" 
+              onClick={event => nav(event, '/#voice-samples')}
+            >
+              Open Interactive Player <ArrowUpRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
 
