@@ -5023,10 +5023,10 @@ button:active:not(:disabled),
 /* Matching: https://avyukta-intellicall.onrender.com/          */
 /* ============================================================ */
 
-/* 1. STICKY NAVBAR MATCHING LIVE REFERENCE */
+/* 1. FIXED NAVBAR MATCHING LIVE REFERENCE (PINNED TO TOP ON SCROLL) */
 .landing-header,
 .studio-header {
-  position: sticky !important;
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
@@ -5037,6 +5037,16 @@ button:active:not(:disabled),
   -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-shell {
+  padding-top: 74px !important;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding-top: 72px !important;
+  }
 }
 
 [data-theme="light"] .landing-header,
