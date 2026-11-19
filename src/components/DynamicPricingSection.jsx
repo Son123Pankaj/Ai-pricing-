@@ -97,6 +97,8 @@ export default function DynamicPricingSection({ navigateTo }) {
 
   return (
     <section id="platform-showcase" className="dynamic-pricing-section" aria-label="Dynamic AI Pricing and Solutions">
+      <span id="product" className="section-anchor" aria-hidden="true" style={{ position: 'relative', top: '-86px', display: 'block', visibility: 'hidden' }} />
+      <span id="platform" className="section-anchor" aria-hidden="true" style={{ position: 'relative', top: '-86px', display: 'block', visibility: 'hidden' }} />
       <div className="studio-container">
         
         {/* Section Heading */}

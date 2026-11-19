@@ -657,6 +657,7 @@ export default function AutomationShowcase({ navigateTo }) {
 
   return (
     <section id="automation-showcase" className="automation-showcase-section" aria-label="What do you want to automate?">
+      <span id="automation" className="section-anchor" aria-hidden="true" style={{ position: 'relative', top: '-86px', display: 'block', visibility: 'hidden' }} />
       {/* Hidden audio element for genuine voice playback */}
       <audio 
         ref={audioRef}

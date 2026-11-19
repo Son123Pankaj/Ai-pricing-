@@ -133,6 +133,7 @@ export default function WhyAvyuktaSection({ navigateTo }) {
       className="studio-section why-avyukta-section" 
       aria-label="Why Choose Avyukta IntelliCall"
     >
+      <span id="why-us" className="section-anchor" aria-hidden="true" style={{ position: 'relative', top: '-86px', display: 'block', visibility: 'hidden' }} />
       <div className="studio-container">
         
         {/* Section Header */}

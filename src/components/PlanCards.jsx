@@ -286,6 +286,7 @@ export default function PlanCards({ navigateTo }) {
 
   return (
     <section id="pricing" className="studio-plan-section" aria-label="Transparent AI Voice & Call Pricing">
+      <span id="plans-section" className="section-anchor" aria-hidden="true" style={{ position: 'relative', top: '-86px', display: 'block', visibility: 'hidden' }} />
       {/* Hidden real audio player streaming genuine prerecorded MP3s from /samples/ */}
       <audio 
         ref={audioRef}
