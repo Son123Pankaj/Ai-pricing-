@@ -43,7 +43,7 @@ const descriptions = {
 const readLocation = () => window.location.pathname + window.location.search + window.location.hash;
 export default function App() {
   const [location, setLocation] = useState(readLocation);
-  const [theme, setTheme] = useState(() => {try {return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';} catch {return 'light';}});
+  const [theme, setTheme] = useState(() => {try {const s = localStorage.getItem('theme'); return s ? s : 'dark';} catch {return 'dark';}});
   const [image, setImage] = useState(null);
   const url = new URL(location, window.location.origin);
   const path = url.pathname.replace(/\/$/, '') || '/';
