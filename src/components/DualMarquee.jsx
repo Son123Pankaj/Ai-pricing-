@@ -363,26 +363,28 @@ export default function DualMarquee() {
         {/* SECTION A: OUR CLIENTS                                       */}
         {/* ============================================================ */}
         <div id="our-clients" className="marquee-block client-marquee-block">
-          <div className="marquee-header-row">
-            <div>
+          <div className="marquee-header-center">
+            <div className="marquee-badge-row">
               <Eyebrow>ENTERPRISE CLIENTELE</Eyebrow>
-              <h2 className="marquee-title">Trusted by Businesses</h2>
               <span className="marquee-subheading-tag">Our Clients</span>
-              <p className="marquee-subtitle">
-                Trusted by leading BPOs, healthcare networks, staffing leaders, and fast-growing enterprises across India and the Philippines.
-              </p>
             </div>
-            <button 
-              type="button" 
-              className="marquee-pause-btn"
-              onClick={() => setClientsPaused(prev => !prev)}
-              aria-label={clientsPaused ? 'Resume Clients animation' : 'Pause Clients animation'}
-              title={clientsPaused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
-              aria-pressed={clientsPaused}
-            >
-              {clientsPaused ? <Play size={14} /> : <Pause size={14} />}
-              <span>{clientsPaused ? 'Resume' : 'Pause'}</span>
-            </button>
+            <h2 className="marquee-title">Trusted by Businesses</h2>
+            <p className="marquee-subtitle">
+              Trusted by leading BPOs, healthcare networks, staffing leaders, and fast-growing enterprises across India and the Philippines.
+            </p>
+            <div className="marquee-controls-row">
+              <button 
+                type="button" 
+                className="marquee-pause-btn"
+                onClick={() => setClientsPaused(prev => !prev)}
+                aria-label={clientsPaused ? 'Resume Clients animation' : 'Pause Clients animation'}
+                title={clientsPaused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
+                aria-pressed={clientsPaused}
+              >
+                {clientsPaused ? <Play size={14} /> : <Pause size={14} />}
+                <span>{clientsPaused ? 'Resume' : 'Pause'}</span>
+              </button>
+            </div>
           </div>
 
           <div 
@@ -427,26 +429,28 @@ export default function DualMarquee() {
         {/* SECTION B: OUR AFFILIATES                                    */}
         {/* ============================================================ */}
         <div id="our-affiliates" className="marquee-block partner-marquee-block">
-          <div className="marquee-header-row">
-            <div>
+          <div className="marquee-header-center">
+            <div className="marquee-badge-row">
               <Eyebrow>HARDWARE, TELECOM &amp; CRM ECOSYSTEM</Eyebrow>
-              <h2 className="marquee-title">Our Technology Ecosystem</h2>
               <span className="marquee-subheading-tag">Our Affiliates</span>
-              <p className="marquee-subtitle">
-                A connected ecosystem spanning CRM platforms, telecom carriers, and enterprise telephony hardware used across modern communication workflows.
-              </p>
             </div>
-            <button 
-              type="button" 
-              className="marquee-pause-btn"
-              onClick={() => setAffiliatesPaused(prev => !prev)}
-              aria-label={affiliatesPaused ? 'Resume Affiliates animation' : 'Pause Affiliates animation'}
-              title={affiliatesPaused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
-              aria-pressed={affiliatesPaused}
-            >
-              {affiliatesPaused ? <Play size={14} /> : <Pause size={14} />}
-              <span>{affiliatesPaused ? 'Resume' : 'Pause'}</span>
-            </button>
+            <h2 className="marquee-title">Our Technology Ecosystem</h2>
+            <p className="marquee-subtitle">
+              A connected ecosystem spanning CRM platforms, telecom carriers, and enterprise telephony hardware used across modern communication workflows.
+            </p>
+            <div className="marquee-controls-row">
+              <button 
+                type="button" 
+                className="marquee-pause-btn"
+                onClick={() => setAffiliatesPaused(prev => !prev)}
+                aria-label={affiliatesPaused ? 'Resume Affiliates animation' : 'Pause Affiliates animation'}
+                title={affiliatesPaused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
+                aria-pressed={affiliatesPaused}
+              >
+                {affiliatesPaused ? <Play size={14} /> : <Pause size={14} />}
+                <span>{affiliatesPaused ? 'Resume' : 'Pause'}</span>
+              </button>
+            </div>
           </div>
 
           <div 
