@@ -52,12 +52,10 @@ export default function FaqSection({ items = CUSTOMER_FAQS }) {
             Frequently Asked <span className="title-coral">Questions</span>
           </h2>
 
-          <p className="faq-lead-desc">
+          {/* <p className="faq-lead-desc">
             Everything you need to know about Avyukta AI Voice Agents, Cloud Dialers, Telecom Interconnects, and CRM Integrations. Have another question?{' '}
-            <a href="mailto:sales@avyukta.in" className="faq-link-highlight">
-              sales[At]avyukta.in
-            </a>
-          </p>
+  
+          </p> */}
         </div>
 
         {/* 2-Column Responsive Card Grid */}

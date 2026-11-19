@@ -1,10 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Workflow, 
   Users, 
   LayoutDashboard, 
   TrendingUp,
-  ChevronDown 
+  ChevronDown,
+  Check 
 } from 'lucide-react';
 import { Eyebrow } from './StudioParts';
 import { getAssetUrl } from '../utils/assetUrl';
@@ -78,7 +79,30 @@ const CRM_VIEWS = [
 export default function DynamicPricingSection({ navigateTo }) {
   const [activeCategory, setActiveCategory] = useState('bpa');
   const [crmView, setCrmView] = useState(0); // 0: CRM Platform, 1: Communications, 2: Employee Workspace
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const tabRefs = useRef([]);
+  const dropdownRef = useRef(null);
+
+  // Close custom mobile dropdown on outside click or Escape key
+  useEffect(() => {
+    if (!isDropdownOpen) return undefined;
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsDropdownOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isDropdownOpen]);
 
   const currentCategory = CATEGORIES.find(c => c.id === activeCategory) || CATEGORIES[0];
   const displayImage = activeCategory === 'crm' 
@@ -133,25 +157,62 @@ export default function DynamicPricingSection({ navigateTo }) {
               <h3>Categories</h3>
             </div>
 
-            {/* Mobile Dropdown Selector (Clean labels, compact width, no text overflow) */}
-            <div className="dynamic-mobile-category-select">
-              <label htmlFor="dynamic-cat-select" className="sr-only">Choose a category</label>
-              <div className="dynamic-select-wrapper">
-                <select 
-                  id="dynamic-cat-select"
-                  value={activeCategory}
-                  onChange={e => setActiveCategory(e.target.value)}
-                  className="dynamic-cat-select-element"
-                  aria-label="Choose platform category"
-                >
-                  {CATEGORIES.map(cat => (
-                    <option key={cat.id} value={cat.id}>
-                      {CATEGORY_DROPDOWN_LABELS[cat.id] || `${cat.label} — ${cat.subtitle}`}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown size={17} className="dynamic-select-chevron" aria-hidden="true" />
-              </div>
+            {/* Custom Mobile Category Selector (100% Contained, Zero Overflow) */}
+            <div className="dynamic-mobile-category-select" ref={dropdownRef}>
+              <button 
+                type="button"
+                id="dynamic-cat-btn"
+                className={`dynamic-custom-select-btn ${isDropdownOpen ? 'is-open' : ''}`}
+                onClick={() => setIsDropdownOpen(prev => !prev)}
+                aria-haspopup="listbox"
+                aria-expanded={isDropdownOpen}
+                aria-label="Choose platform category"
+              >
+                <div className="dynamic-select-current-item">
+                  <div className="dynamic-select-icon-box">
+                    <currentCategory.icon size={16} />
+                  </div>
+                  <div className="dynamic-select-text-group">
+                    <span className="dynamic-select-main-label">{currentCategory.label}</span>
+                    <span className="dynamic-select-sub-label">{currentCategory.subtitle}</span>
+                  </div>
+                </div>
+                <ChevronDown size={18} className={`dynamic-select-chevron ${isDropdownOpen ? 'rotated' : ''}`} />
+              </button>
+
+              {isDropdownOpen && (
+                <div className="dynamic-custom-dropdown-popover" role="listbox" aria-label="Platform categories">
+                  {CATEGORIES.map(cat => {
+                    const Icon = cat.icon;
+                    const isSelected = activeCategory === cat.id;
+
+                    return (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        role="option"
+                        aria-selected={isSelected}
+                        className={`dynamic-custom-option-item ${isSelected ? 'selected' : ''}`}
+                        onClick={() => {
+                          setActiveCategory(cat.id);
+                          setIsDropdownOpen(false);
+                        }}
+                      >
+                        <div className="dynamic-option-icon-box">
+                          <Icon size={16} />
+                        </div>
+                        <div className="dynamic-option-text-wrap">
+                          <span className="dynamic-option-title">{cat.label}</span>
+                          <span className="dynamic-option-desc">{cat.subtitle}</span>
+                        </div>
+                        {isSelected && (
+                          <Check size={16} className="dynamic-option-check-icon" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             {/* Vertical Desktop/Tablet Navigation */}
