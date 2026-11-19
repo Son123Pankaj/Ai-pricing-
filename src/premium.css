@@ -5727,10 +5727,399 @@ section[id] {
 
 
 /* ============================================================ */
-/* REDESIGNED HERO SECTION: COMPACT HEIGHT & WIDER VOICE STUDIO */
+/* AVYUKTA INTELLICALL — COMPLETE RESPONSIVE OPTIMIZATION SYSTEM  */
+/* BREAKPOINTS: 320px, 360px, 375px, 390px, 414px, 430px, 768px, 1024px, 1280px, 1440px, 1920px */
 /* ============================================================ */
 
-/* Hero Container & Background */
+/* ------------------------------------------------------------ */
+/* 0. GLOBAL VIEWPORT & OVERFLOW SAFEGUARDS                     */
+/* ------------------------------------------------------------ */
+html, body {
+  overflow-x: clip !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+#root,
+.app-shell {
+  overflow-x: clip !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+/* Global media containment */
+img, svg, video, canvas {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* Smooth section anchor offset for fixed navbar */
+#hero, 
+#pricing, 
+#plans-section, 
+#why-avyukta, 
+#why-us, 
+#platform-showcase, 
+#automation-showcase, 
+#industries, 
+#voice-samples, 
+#faq,
+.section-anchor,
+[id] {
+  scroll-margin-top: 82px !important;
+}
+
+@media (max-width: 768px) {
+  #hero, 
+  #pricing, 
+  #plans-section, 
+  #why-avyukta, 
+  #why-us, 
+  #platform-showcase, 
+  #automation-showcase, 
+  #industries, 
+  #voice-samples, 
+  #faq,
+  .section-anchor,
+  [id] {
+    scroll-margin-top: 72px !important;
+  }
+}
+
+/* Responsive Containers Across Viewports */
+.studio-container,
+.landing-wrap {
+  width: min(100% - clamp(20px, 4vw, 88px), 1400px) !important;
+  max-width: 1400px !important;
+  margin-inline: auto !important;
+}
+
+@media (max-width: 1024px) {
+  .studio-container,
+  .landing-wrap {
+    width: min(100% - 36px, 100%) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .studio-container,
+  .landing-wrap {
+    width: min(100% - 24px, 100%) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .studio-container,
+  .landing-wrap {
+    width: calc(100% - 16px) !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 1. FIXED NAVBAR: DESKTOP, TABLET & MOBILE DRAWER             */
+/* ------------------------------------------------------------ */
+.landing-header,
+.studio-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  background: rgba(3, 20, 31, 0.94) !important;
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+[data-theme="light"] .landing-header,
+[data-theme="light"] .studio-header {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.studio-header.scrolled {
+  background: rgba(4, 18, 26, 0.98) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="light"] .studio-header.scrolled {
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.app-shell {
+  padding-top: 74px !important;
+}
+
+.landing-wrap.landing-nav.studio-nav-shell,
+.studio-nav-shell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: min(100% - clamp(20px, 3.5vw, 64px), 1400px) !important;
+  max-width: 1400px !important;
+  height: 74px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Brand Logo */
+.landing-brand,
+.studio-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  min-width: 0 !important;
+}
+
+.studio-brand img {
+  width: clamp(150px, 18vw, 210px) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Nav Actions */
+.landing-actions.studio-nav-actions,
+.studio-nav-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+.studio-theme-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #F8FCFF !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-theme="light"] .studio-theme-btn {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #031F2B !important;
+}
+
+.studio-theme-btn:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Sandbox CTA */
+.landing-button.compact,
+.landing-button.compact.studio-nav-contact,
+.studio-nav-contact {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #12DDE2 !important;
+  color: #031F2B !important;
+  font-family: var(--font-body, 'Jost', sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  padding: 8px 18px !important;
+  text-decoration: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.landing-button.compact:hover,
+.studio-nav-contact:hover {
+  background: #5eead4 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(18, 221, 226, 0.4) !important;
+}
+
+/* Hamburger Toggle Button */
+.landing-menu-btn.studio-menu-btn,
+.studio-menu-btn {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #F8FCFF !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-theme="light"] .studio-menu-btn {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #031F2B !important;
+}
+
+/* Mobile & Tablet Navbar Adjustments */
+@media (max-width: 1024px) {
+  .landing-desktop-nav,
+  .studio-desktop-nav {
+    display: none !important;
+  }
+  .landing-menu-btn.studio-menu-btn,
+  .studio-menu-btn {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding-top: 66px !important;
+  }
+  .landing-wrap.landing-nav.studio-nav-shell,
+  .studio-nav-shell {
+    height: 66px !important;
+    width: calc(100% - 24px) !important;
+  }
+  /* Hide the desktop Sandbox button from the header bar on mobile so it doesn't crowd out the logo */
+  .landing-button.compact.studio-nav-contact,
+  .studio-nav-contact {
+    display: none !important;
+  }
+  .studio-brand img {
+    width: clamp(140px, 42vw, 175px) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing-wrap.landing-nav.studio-nav-shell,
+  .studio-nav-shell {
+    width: calc(100% - 16px) !important;
+  }
+  .studio-brand img {
+    width: 135px !important;
+  }
+  .studio-theme-btn,
+  .studio-menu-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+/* Mobile Drawer Menu */
+.studio-mobile-menu {
+  position: fixed !important;
+  top: 74px !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999 !important;
+  background: rgba(4, 18, 26, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 18px 20px 24px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+  display: none;
+  max-height: calc(100vh - 74px) !important;
+  overflow-y: auto !important;
+}
+
+[data-theme="light"] .studio-mobile-menu {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+@media (max-width: 768px) {
+  .studio-mobile-menu {
+    top: 66px !important;
+    max-height: calc(100vh - 66px) !important;
+    padding: 14px 16px 20px !important;
+  }
+}
+
+.studio-mobile-menu.open {
+  display: flex !important;
+  flex-direction: column !important;
+  animation: mobileMenuSlideDown 0.22s ease-out !important;
+}
+
+@keyframes mobileMenuSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.studio-mobile-menu nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  width: 100% !important;
+}
+
+.studio-mobile-menu nav a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 11px 14px !important;
+  border-radius: 10px !important;
+  color: #C5D8DE !important;
+  font-size: 15px !important;
+  font-weight: 550 !important;
+  text-decoration: none !important;
+  transition: all 0.18s ease !important;
+}
+
+[data-theme="light"] .studio-mobile-menu nav a {
+  color: #1a3844 !important;
+}
+
+.studio-mobile-menu nav a.active,
+.studio-mobile-menu nav a:hover {
+  background: rgba(18, 221, 226, 0.14) !important;
+  color: #12DDE2 !important;
+}
+
+[data-theme="light"] .studio-mobile-menu nav a.active,
+[data-theme="light"] .studio-mobile-menu nav a:hover {
+  background: rgba(0, 165, 174, 0.1) !important;
+  color: #00A5AE !important;
+}
+
+.mobile-menu-cta-wrap {
+  margin-top: 14px !important;
+  padding-top: 14px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  width: 100% !important;
+}
+
+[data-theme="light"] .mobile-menu-cta-wrap {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.mobile-menu-cta-wrap .landing-button {
+  width: 100% !important;
+  min-height: 44px !important;
+  justify-content: center !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* ------------------------------------------------------------ */
+/* 2. HERO SECTION: DESKTOP LAYERED & MOBILE VERTICAL COMPACT   */
+/* ------------------------------------------------------------ */
 .hero-voice-studio-section {
   position: relative !important;
   isolation: isolate !important;
@@ -5745,7 +6134,7 @@ section[id] {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: clamp(18px, 2.8vh, 32px) 0 clamp(22px, 3.2vh, 38px) !important;
+  padding: clamp(20px, 3vh, 34px) 0 clamp(24px, 3.5vh, 40px) !important;
 }
 
 [data-theme="dark"] .hero-voice-studio-section {
@@ -5755,7 +6144,6 @@ section[id] {
     linear-gradient(180deg, #031F2B 0%, #062D38 50%, #031F2B 100%) !important;
 }
 
-/* Subtle Dotted Tech Grid Background */
 .hero-grid-pattern {
   position: absolute !important;
   inset: 0 !important;
@@ -5791,17 +6179,16 @@ section[id] {
   right: -50px !important;
 }
 
-/* Content Container (max-width 1460px) */
 .hero-content-container {
   position: relative !important;
   z-index: 2 !important;
-  width: min(100% - clamp(20px, 3vw, 56px), 1460px) !important;
+  width: min(100% - clamp(20px, 3.5vw, 64px), 1460px) !important;
   max-width: 1460px !important;
   margin: 0 auto !important;
-  padding: 0 clamp(8px, 1.5vw, 20px) !important;
+  padding: 0 clamp(6px, 1.5vw, 20px) !important;
 }
 
-/* 2-Column Layout (~44% Left / ~56% Right to give card full width) */
+/* 2-Column Desktop Layout (44% Left / 56% Right) */
 .hero-two-col-layout {
   display: grid !important;
   grid-template-columns: 44% 56% !important;
@@ -5810,9 +6197,6 @@ section[id] {
   width: 100% !important;
 }
 
-/* ------------------------------------------------------------ */
-/* LEFT COLUMN: COMPACT & BALANCED                              */
-/* ------------------------------------------------------------ */
 .hero-left-col {
   display: flex !important;
   flex-direction: column !important;
@@ -5822,7 +6206,6 @@ section[id] {
   z-index: 2 !important;
 }
 
-/* Top AI Badge */
 .hero-top-badge {
   display: inline-flex !important;
   align-items: center !important;
@@ -5852,15 +6235,14 @@ section[id] {
   text-transform: uppercase !important;
 }
 
-/* Main Heading */
 .hero-title {
   font-family: var(--font-heading, 'Jost', sans-serif) !important;
-  font-size: clamp(2.1rem, 3.2vw, 3.1rem) !important;
+  font-size: clamp(2rem, 3.2vw, 3.1rem) !important;
   line-height: 1.1 !important;
   font-weight: 750 !important;
   color: #F8FCFF !important;
   margin: 0 0 14px !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: -0.025em !important;
   text-wrap: balance !important;
 }
 
@@ -5869,7 +6251,6 @@ section[id] {
   text-shadow: 0 0 20px rgba(18, 221, 226, 0.3) !important;
 }
 
-/* Description */
 .hero-desc {
   font-size: clamp(14px, 1.05vw, 15.5px) !important;
   line-height: 1.55 !important;
@@ -5878,7 +6259,6 @@ section[id] {
   margin: 0 0 16px !important;
 }
 
-/* Four Feature Chips */
 .hero-feature-chips {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
@@ -5925,7 +6305,6 @@ section[id] {
   color: #F8FCFF !important;
 }
 
-/* CTA Buttons */
 .hero-cta-group {
   display: flex !important;
   align-items: center !important;
@@ -5984,7 +6363,6 @@ section[id] {
   transform: translateY(-2px) !important;
 }
 
-/* Trust Row */
 .hero-trust-row {
   display: flex !important;
   align-items: center !important;
@@ -6006,9 +6384,7 @@ section[id] {
   flex-shrink: 0 !important;
 }
 
-/* ------------------------------------------------------------ */
-/* RIGHT COLUMN: WIDER VOICE STUDIO CARD & COMPACT OVERLAPPING  */
-/* ------------------------------------------------------------ */
+/* Hero Right Column: Layered Female AI Caller & Voice Studio */
 .hero-right-col {
   display: flex !important;
   flex-direction: column !important;
@@ -6029,7 +6405,6 @@ section[id] {
   margin: 0 auto !important;
 }
 
-/* Subtle Halo Behind Girl */
 .hero-girl-halo {
   position: absolute !important;
   top: 0 !important;
@@ -6042,15 +6417,8 @@ section[id] {
   filter: blur(35px) !important;
   z-index: 1 !important;
   pointer-events: none !important;
-  animation: haloBreath 7s ease-in-out infinite alternate !important;
 }
 
-@keyframes haloBreath {
-  0% { transform: translateX(-50%) scale(0.95); opacity: 0.65; }
-  100% { transform: translateX(-50%) scale(1.08); opacity: 0.95; }
-}
-
-/* Girl Frame (Compact Height, Neatly Overlapped) */
 .hero-girl-frame {
   position: relative !important;
   z-index: 2 !important;
@@ -6063,17 +6431,16 @@ section[id] {
 }
 
 .hero-girl-img {
-  width: clamp(200px, 20vw, 290px) !important;
+  width: clamp(190px, 18vw, 280px) !important;
   height: auto !important;
-  max-height: 240px !important;
+  max-height: 235px !important;
   object-fit: contain !important;
   display: block !important;
   filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.45)) !important;
-  mask-image: linear-gradient(to bottom, black 72%, transparent 100%) !important;
-  -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%) !important;
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
 }
 
-/* Voice Studio Card Wrap (Wider & Compact Height) */
 .hero-voice-studio-wrap {
   position: relative !important;
   z-index: 10 !important;
@@ -6083,7 +6450,6 @@ section[id] {
   scroll-margin-top: 86px !important;
 }
 
-/* Decorative Tilted Backing Frame */
 .voice-studio-decorative-tilt {
   position: absolute !important;
   inset: -3px -3px 3px -3px !important;
@@ -6093,12 +6459,6 @@ section[id] {
   filter: drop-shadow(0 0 20px rgba(18, 221, 226, 0.22)) !important;
   z-index: 0 !important;
   pointer-events: none !important;
-  animation: studioCardGlow 6s ease-in-out infinite alternate !important;
-}
-
-@keyframes studioCardGlow {
-  0% { opacity: 0.7; filter: drop-shadow(0 0 12px rgba(18, 221, 226, 0.18)); }
-  100% { opacity: 1; filter: drop-shadow(0 0 24px rgba(18, 221, 226, 0.35)); }
 }
 
 .voice-studio-card-inner {
@@ -6106,7 +6466,7 @@ section[id] {
   z-index: 1 !important;
 }
 
-/* Embedded Voice Studio Card Styling: Wide & Sleek */
+/* Voice Studio Card Styling */
 .hero-voice-studio-wrap .voice-library {
   position: relative !important;
   z-index: 1 !important;
@@ -6117,7 +6477,6 @@ section[id] {
   padding: 16px 22px !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  transform: none !important;
   color: #F8FCFF !important;
   min-width: 0 !important;
 }
@@ -6212,12 +6571,6 @@ section[id] {
 .hero-voice-studio-wrap .voice-play svg {
   width: 18px !important;
   height: 18px !important;
-}
-
-.hero-voice-studio-wrap .voice-play:hover {
-  transform: scale(1.05) !important;
-  background: #5eead4 !important;
-  box-shadow: 0 0 20px rgba(18, 221, 226, 0.55) !important;
 }
 
 .hero-voice-studio-wrap .voice-now-playing strong {
@@ -6327,55 +6680,11 @@ section[id] {
   margin: 6px 0 0 !important;
 }
 
-/* ------------------------------------------------------------ */
-/* LOWER VOICE SECTION SHOWCASE CARD (NO DUPLICATE AUDIO PLAYER)*/
-/* ------------------------------------------------------------ */
-.voice-studio-jump-card {
-  background: rgba(6, 45, 56, 0.85) !important;
-  border: 1.5px solid rgba(18, 221, 226, 0.3) !important;
-  border-radius: 24px !important;
-  padding: 28px !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 10px !important;
-}
-
-.jump-card-pill {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  padding: 4px 12px !important;
-  border-radius: 999px !important;
-  background: rgba(18, 221, 226, 0.12) !important;
-  color: #12DDE2 !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
-}
-
-.voice-studio-jump-card h3 {
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  color: #F8FCFF !important;
-  margin: 0 !important;
-}
-
-.voice-studio-jump-card p {
-  font-size: 13.5px !important;
-  line-height: 1.55 !important;
-  color: #C5D8DE !important;
-  margin: 0 0 6px !important;
-}
-
-/* ------------------------------------------------------------ */
-/* RESPONSIVE BREAKPOINTS (LAPTOP, TABLET, MOBILE)             */
-/* ------------------------------------------------------------ */
+/* Tablet & Mobile Hero Layout Adjustments */
 @media (max-width: 1024px) {
   .hero-two-col-layout {
     grid-template-columns: 1fr !important;
-    gap: 36px !important;
+    gap: 32px !important;
   }
   .hero-left-col {
     max-width: 100% !important;
@@ -6386,7 +6695,7 @@ section[id] {
     align-self: center !important;
   }
   .hero-feature-chips {
-    max-width: 540px !important;
+    max-width: 520px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -6397,7 +6706,7 @@ section[id] {
     justify-content: center !important;
   }
   .hero-girl-frame {
-    margin-bottom: -40px !important;
+    margin: 10px auto -40px !important;
   }
   .hero-voice-studio-wrap {
     max-width: 100% !important;
@@ -6406,27 +6715,713 @@ section[id] {
 
 @media (max-width: 768px) {
   .hero-voice-studio-section {
-    padding: 20px 0 32px !important;
+    padding: 16px 0 28px !important;
+  }
+  .hero-title {
+    font-size: clamp(1.75rem, 5.8vw, 2.35rem) !important;
+    margin-bottom: 12px !important;
+  }
+  .hero-desc {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 16px !important;
   }
   .hero-feature-chips {
     grid-template-columns: 1fr !important;
-  }
-  .hero-girl-img {
-    max-height: 200px !important;
-    width: clamp(180px, 50vw, 240px) !important;
-  }
-  .hero-girl-frame {
-    margin-bottom: -30px !important;
-  }
-  .voice-studio-decorative-tilt {
-    transform: none !important;
+    max-width: 440px !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
   }
   .hero-cta-group {
     flex-direction: column !important;
     width: 100% !important;
+    max-width: 440px !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
   }
   .hero-primary-cta,
   .hero-secondary-cta {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 14.5px !important;
+  }
+  .hero-trust-row {
+    gap: 10px !important;
+  }
+  .hero-trust-tag {
+    font-size: 11.5px !important;
+  }
+  /* Female AI Caller image scaled cleanly, horizontally centered, no overflow */
+  .hero-girl-img {
+    max-height: 200px !important;
+    width: clamp(170px, 46vw, 230px) !important;
+  }
+  .hero-girl-frame {
+    margin: 12px auto -30px !important;
+  }
+  /* Remove rotation on mobile so card borders never poke outside screen */
+  .voice-studio-decorative-tilt {
+    transform: none !important;
+    inset: 0 !important;
+    border-radius: 20px !important;
+  }
+  .hero-voice-studio-wrap .voice-library {
+    padding: 14px 14px !important;
+    border-radius: 20px !important;
+  }
+  .hero-voice-studio-wrap .voice-tier-tabs {
+    gap: 2px !important;
+    padding: 2px !important;
+  }
+  .hero-voice-studio-wrap .voice-tier-tabs button {
+    min-height: 30px !important;
+    font-size: 11px !important;
+    padding: 2px 4px !important;
+  }
+  .hero-voice-studio-wrap .voice-now-playing {
+    padding: 7px 10px !important;
+    gap: 8px !important;
+  }
+  .hero-voice-studio-wrap .voice-play {
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+  .hero-voice-studio-wrap .voice-now-playing strong {
+    font-size: 13.5px !important;
+  }
+  .hero-voice-studio-wrap .voice-time {
+    font-size: 10.5px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-voice-studio-section {
+    padding: 14px 0 24px !important;
+  }
+  .hero-title {
+    font-size: 1.6rem !important;
+  }
+  .hero-girl-img {
+    max-height: 175px !important;
+    width: 160px !important;
+  }
+  .hero-girl-frame {
+    margin: 10px auto -25px !important;
+  }
+  .hero-voice-studio-wrap .voice-tier-tabs button {
+    font-size: 10px !important;
+    letter-spacing: -0.02em !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 3. PRICING SECTION & CARDS RESPONSIVE GRID                   */
+/* ------------------------------------------------------------ */
+.studio-plan-section {
+  position: relative !important;
+  padding: clamp(48px, 6vh, 84px) 0 !important;
+}
+
+.studio-plan-heading {
+  text-align: center !important;
+  max-width: 820px !important;
+  margin: 0 auto 36px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.studio-plan-heading .studio-eyebrow {
+  margin: 0 auto 10px !important;
+}
+
+.studio-plan-heading h2 {
+  font-size: clamp(28px, 3.2vw, 46px) !important;
+  line-height: 1.15 !important;
+  margin: 0 0 14px !important;
+  text-align: center !important;
+}
+
+.studio-plan-heading p {
+  font-size: 15.5px !important;
+  line-height: 1.6 !important;
+  color: var(--studio-muted) !important;
+  margin: 0 auto 20px !important;
+  max-width: 660px !important;
+  text-align: center !important;
+}
+
+.studio-plan-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 28px !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+}
+
+/* Multi-column to responsive single-column grid */
+.studio-plan-grid,
+.conversion-plan-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+.studio-plan-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.studio-plan-card .studio-plan-price {
+  min-width: 0 !important;
+  overflow-wrap: break-word !important;
+}
+
+.studio-plan-card .studio-plan-cta {
+  width: 100% !important;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-top: auto !important;
+}
+
+/* Tablet (769px–1024px): 2 columns */
+@media (max-width: 1024px) {
+  .studio-plan-grid,
+  .conversion-plan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+}
+
+/* Mobile (<= 768px): 1 column full width */
+@media (max-width: 768px) {
+  .studio-plan-section {
+    padding: 36px 0 54px !important;
+  }
+  .studio-plan-grid,
+  .conversion-plan-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .studio-plan-card {
+    padding: 20px 18px 18px !important;
+    border-radius: 18px !important;
+  }
+  .card-voice-dropdown-wrapper {
+    margin: 8px 0 10px !important;
+  }
+  .card-voice-dropdown-btn {
+    min-height: 38px !important;
+    padding: 7px 10px !important;
+    font-size: 12px !important;
+  }
+  .card-voice-dropdown-menu {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+  .dropdown-options-list {
+    max-height: 200px !important;
+  }
+  .dropdown-option-row {
+    padding: 8px 9px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .studio-plan-card {
+    padding: 18px 14px 16px !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 4. WHY AVYUKTA SECTION RESPONSIVE SYSTEM                     */
+/* ------------------------------------------------------------ */
+.why-avyukta-section {
+  padding: clamp(48px, 6vh, 84px) 0 !important;
+}
+
+.why-avyukta-header {
+  text-align: center !important;
+  max-width: 820px !important;
+  margin: 0 auto clamp(28px, 4vh, 44px) !important;
+}
+
+.why-avyukta-main-heading {
+  font-size: clamp(26px, 3.2vw, 44px) !important;
+  text-align: center !important;
+  margin: 10px 0 14px !important;
+}
+
+.why-avyukta-subheading {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 1024px) {
+  .why-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+  }
+  .why-advantages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .why-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 28px !important;
+  }
+  .why-stat-card {
+    padding: 14px 16px !important;
+  }
+  .why-advantages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 28px !important;
+  }
+  .why-advantage-card {
+    padding: 18px 18px !important;
+  }
+  .why-refund-assurance-banner {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 18px !important;
+  }
+  .refund-assurance-content {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  .refund-action-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+  .refund-action-buttons .studio-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 5. DYNAMIC PRICING & PLATFORM WORKSPACE                      */
+/* ------------------------------------------------------------ */
+.dynamic-pricing-section {
+  padding: clamp(48px, 6vh, 84px) 0 !important;
+}
+
+.dynamic-section-heading {
+  text-align: center !important;
+  align-items: center !important;
+}
+
+.dynamic-section-title {
+  text-align: center !important;
+  font-size: clamp(26px, 3.4vw, 46px) !important;
+}
+
+.dynamic-section-desc {
+  text-align: center !important;
+}
+
+@media (max-width: 1024px) {
+  .dynamic-workspace-shell {
+    grid-template-columns: 210px 1fr !important;
+    gap: 20px !important;
+  }
+  .dynamic-media-frame {
+    min-height: auto !important;
+    padding: 8px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dynamic-workspace-shell {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .dynamic-category-sidebar {
+    position: static !important;
+    padding: 14px !important;
+    border-radius: 16px !important;
+  }
+  .dynamic-category-nav-list {
+    display: none !important;
+  }
+  .dynamic-mobile-category-select {
+    display: block !important;
+  }
+  .dynamic-mobile-category-select select {
+    width: 100% !important;
+    min-height: 44px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+  .crm-image-toggle-bar {
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .crm-toggle-btn {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+  .dynamic-media-frame {
+    min-height: auto !important;
+    padding: 6px !important;
+    border-radius: 14px !important;
+  }
+  .dynamic-full-image {
+    max-height: 440px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+  .dynamic-features-pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .dynamic-bottom-links-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 6. DUAL MARQUEE (CLIENTS & AFFILIATES)                       */
+/* ------------------------------------------------------------ */
+.marquee-scroller-window {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow: hidden !important;
+  padding: 8px 0 !important;
+}
+
+.marquee-header-center {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.marquee-title {
+  text-align: center !important;
+  font-size: clamp(24px, 3vw, 42px) !important;
+}
+
+.marquee-subtitle {
+  text-align: center !important;
+}
+
+.marquee-controls-row {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .brand-logo-tile {
+    min-width: 145px !important;
+    height: 70px !important;
+    padding: 10px 16px !important;
+    border-radius: 12px !important;
+    gap: 5px !important;
+  }
+  .brand-logo-wrap {
+    height: 26px !important;
+  }
+  .brand-logo-svg {
+    height: 22px !important;
+    max-width: 110px !important;
+  }
+  .brand-category-label {
+    font-size: 9px !important;
+  }
+  .marquee-group {
+    gap: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 7. AUTOMATION SHOWCASE (WORKFLOW ENGINE)                     */
+/* ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .auto-workflow-steps-row {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .auto-workflow-arrow {
+    transform: rotate(90deg) !important;
+    margin: 4px auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .auto-categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .auto-category-tab-card {
+    padding: 12px 14px !important;
+  }
+  .auto-step-card {
+    padding: 16px !important;
+    border-radius: 14px !important;
+  }
+  .auto-media-frame {
+    min-height: auto !important;
+    padding: 6px !important;
+  }
+  .auto-full-image {
+    max-height: 380px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 8. INDUSTRIES SECTION GRID FIX (NO OVERFLOW)                 */
+/* ------------------------------------------------------------ */
+.industries-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  margin-bottom: 40px !important;
+  width: 100% !important;
+}
+
+@media (min-width: 1024px) {
+  .industry-card:nth-child(7) {
+    grid-column: 2 / 3 !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .industries-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+  .industry-card:nth-child(7) {
+    grid-column: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .industries-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .industry-card {
+    padding: 18px 16px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+  }
+  .industry-card:nth-child(7) {
+    grid-column: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 9. FAQ SECTION RESPONSIVE GRID                               */
+/* ------------------------------------------------------------ */
+.faq-section-block {
+  padding: clamp(48px, 6vh, 84px) 0 !important;
+}
+
+.faq-head-center {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-bottom: 36px !important;
+}
+
+.faq-main-title {
+  text-align: center !important;
+  font-size: clamp(26px, 3.4vw, 44px) !important;
+}
+
+.faq-lead-desc {
+  text-align: center !important;
+  max-width: 660px !important;
+}
+
+.faq-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: start !important;
+  width: 100% !important;
+}
+
+@media (max-width: 840px) {
+  .faq-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .faq-card-header {
+    padding: 16px 16px !important;
+    gap: 12px !important;
+  }
+  .faq-card-q-text {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+  }
+  .faq-card-body {
+    padding: 0 16px 16px !important;
+  }
+  .faq-card-a-text {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 10. FLOATING CONTACT ACTIONS DOCK & AI MODAL                 */
+/* ------------------------------------------------------------ */
+.floating-actions-dock {
+  position: fixed !important;
+  bottom: 84px !important;
+  right: 20px !important;
+  z-index: 999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  align-items: flex-end !important;
+}
+
+.floating-btn {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 768px) {
+  .floating-actions-dock {
+    bottom: 78px !important;
+    right: 14px !important;
+    gap: 8px !important;
+  }
+  .floating-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .floating-btn-tooltip {
+    display: none !important;
+  }
+  .floating-ai-modal-content {
+    width: min(calc(100vw - 20px), 880px) !important;
+    max-height: min(88vh, 760px) !important;
+    border-radius: 18px !important;
+    margin: auto !important;
+  }
+  .floating-ai-modal-header {
+    padding: 12px 16px !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 11. FOOTER RESPONSIVE GRID                                   */
+/* ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .studio-footer-top {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px 24px !important;
+  }
+  .studio-footer-intro {
+    grid-column: 1 / -1 !important;
+  }
+  .studio-footer-reach {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .studio-footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding-bottom: 36px !important;
+  }
+  .studio-footer-intro img {
+    width: clamp(180px, 50vw, 220px) !important;
+  }
+  .studio-footer-bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* 12. LOWER SAMPLE JUMP CARD RESPONSIVENESS                    */
+/* ------------------------------------------------------------ */
+.sample-section-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1.1fr !important;
+  gap: clamp(24px, 4vw, 56px) !important;
+  align-items: center !important;
+}
+
+.voice-studio-jump-card {
+  background: rgba(6, 45, 56, 0.85) !important;
+  border: 1.5px solid rgba(18, 221, 226, 0.3) !important;
+  border-radius: 24px !important;
+  padding: 24px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+
+[data-theme="light"] .voice-studio-jump-card {
+  background: rgba(240, 249, 250, 0.95) !important;
+  border-color: rgba(0, 165, 174, 0.3) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.voice-studio-jump-card h3 {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  color: #F8FCFF !important;
+}
+
+[data-theme="light"] .voice-studio-jump-card h3 {
+  color: #031F2B !important;
+}
+
+.voice-studio-jump-card p {
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  color: #C5D8DE !important;
+  margin: 0 0 6px !important;
+}
+
+[data-theme="light"] .voice-studio-jump-card p {
+  color: #3b5a66 !important;
+}
+
+@media (max-width: 900px) {
+  .sample-section-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  .voice-studio-jump-card {
+    padding: 18px !important;
+    border-radius: 18px !important;
     width: 100% !important;
   }
 }
