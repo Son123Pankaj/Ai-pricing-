@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { PLANS, VOLUME_BANDS, volumeBandFor, rateLabel } from '../data/offer';
 export default function VolumeCalculator() {
   const [minutes, setMinutes] = useState(60000);
