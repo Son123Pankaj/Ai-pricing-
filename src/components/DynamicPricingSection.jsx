@@ -3,10 +3,19 @@ import {
   Workflow, 
   Users, 
   LayoutDashboard, 
-  TrendingUp 
+  TrendingUp,
+  ChevronDown 
 } from 'lucide-react';
 import { Eyebrow } from './StudioParts';
 import { getAssetUrl } from '../utils/assetUrl';
+
+// Clean, compact dropdown option labels for mobile (no redundant duplicate text or screen overflow)
+const CATEGORY_DROPDOWN_LABELS = {
+  bpa: 'BPA — Process Automation',
+  crm: 'CRM — Customer Platform',
+  'command-center': 'Command Center — Operations',
+  sales: 'Sales — Customer Journey'
+};
 
 // The 4 Required Categories in exact order: 1. BPA | 2. CRM | 3. Command Center | 4. Sales
 const CATEGORIES = [
@@ -124,20 +133,25 @@ export default function DynamicPricingSection({ navigateTo }) {
               <h3>Categories</h3>
             </div>
 
-            {/* Mobile Dropdown Selector */}
+            {/* Mobile Dropdown Selector (Clean labels, compact width, no text overflow) */}
             <div className="dynamic-mobile-category-select">
               <label htmlFor="dynamic-cat-select" className="sr-only">Choose a category</label>
-              <select 
-                id="dynamic-cat-select"
-                value={activeCategory}
-                onChange={e => setActiveCategory(e.target.value)}
-              >
-                {CATEGORIES.map(cat => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.label} – {cat.fullForm}
-                  </option>
-                ))}
-              </select>
+              <div className="dynamic-select-wrapper">
+                <select 
+                  id="dynamic-cat-select"
+                  value={activeCategory}
+                  onChange={e => setActiveCategory(e.target.value)}
+                  className="dynamic-cat-select-element"
+                  aria-label="Choose platform category"
+                >
+                  {CATEGORIES.map(cat => (
+                    <option key={cat.id} value={cat.id}>
+                      {CATEGORY_DROPDOWN_LABELS[cat.id] || `${cat.label} — ${cat.subtitle}`}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={17} className="dynamic-select-chevron" aria-hidden="true" />
+              </div>
             </div>
 
             {/* Vertical Desktop/Tablet Navigation */}
