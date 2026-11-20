@@ -21,7 +21,12 @@ const INDUSTRIES = [
     accent: '#0284c7', // Sky Blue
     badge: 'BFSI & Fintech',
     description: 'Automate loan eligibility checks, payment reminder calls, EMI updates, and secure transaction confirmations.',
-    highlight: 'Instant Payment Follow-ups'
+    highlight: 'Instant Payment Follow-ups',
+    voiceDemo: {
+      title: 'EMI & Payment Collection Call',
+      scenario: 'Polite Hindi reminder for overdue EMI, customer authentication, and instant WhatsApp payment link drop.',
+      src: '/samples/gold-2.mp3'
+    }
   },
   {
     id: 'bpo',
@@ -32,9 +37,9 @@ const INDUSTRIES = [
     description: 'High-volume outbound predictive dialing, live agent handoff, sub-500ms voice cadence, and real-time call disposition.',
     highlight: '100+ Concurrent Channels',
     voiceDemo: {
-      title: 'AI Outbound Calling',
-      scenario: 'AI assistant introduces business service, qualifies enquiry, and schedules follow-up.',
-      src: '/samples/silver-1.mp3'
+      title: 'AI Outbound Predictive Sales',
+      scenario: 'AI sales caller dials prospect, pitches business telephony, qualifies budget, and books callback in natural Hindi & English.',
+      src: '/samples/gold-1.mp3'
     }
   },
   {
@@ -44,7 +49,12 @@ const INDUSTRIES = [
     accent: '#e11d48', // Rose
     badge: 'Clinical Telephony',
     description: 'Patient appointment reminders, doctor OPD schedule management, diagnostic test alerts, and post-consultation care calls.',
-    highlight: 'Reduce Patient No-Shows'
+    highlight: 'Reduce Patient No-Shows',
+    voiceDemo: {
+      title: 'OPD Appointment Confirmation',
+      scenario: 'AI assistant verifies patient details, confirms doctor consultation time, and sends clinic directions on WhatsApp.',
+      src: '/samples/gold-5.mp3'
+    }
   },
   {
     id: 'education',
@@ -73,8 +83,8 @@ const INDUSTRIES = [
     description: 'Pre-qualify buyer budgets, schedule on-site flat visits, automate builder CRM updates, and manage NRI investor calls.',
     highlight: 'Schedule Site Visits Faster',
     voiceDemo: {
-      title: 'AI Real Estate Assistant',
-      scenario: 'AI assistant pre-qualifies budget, preferred location, and schedules a site visit.',
+      title: 'Real Estate Flat Visit Booking',
+      scenario: 'Pre-qualifies 2BHK/3BHK buyer budget, preferred locality, and schedules a weekend on-site visit.',
       src: '/samples/gold-3.mp3'
     }
   },
@@ -87,8 +97,8 @@ const INDUSTRIES = [
     description: '24/7 routine inquiry handling, ticket status lookups, multi-channel customer triage, and seamless human agent escalation.',
     highlight: '24/7 Voice & WhatsApp Support',
     voiceDemo: {
-      title: 'AI Customer Support',
-      scenario: 'AI assistant greets caller, answers service FAQs, and verifies account status.',
+      title: '24/7 Inbound Triage Desk',
+      scenario: 'Greets caller with zero wait time, diagnoses enquiry, and transfers to human supervisor with full context.',
       src: '/samples/silver-2.mp3'
     }
   }

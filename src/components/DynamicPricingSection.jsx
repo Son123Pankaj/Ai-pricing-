@@ -4,8 +4,7 @@ import {
   Users, 
   LayoutDashboard, 
   TrendingUp,
-  ChevronDown,
-  Check 
+  ChevronDown
 } from 'lucide-react';
 import { Eyebrow } from './StudioParts';
 import { getAssetUrl } from '../utils/assetUrl';
@@ -157,7 +156,7 @@ export default function DynamicPricingSection({ navigateTo }) {
               <h3>Categories</h3>
             </div>
 
-            {/* Custom Mobile Category Selector (100% Contained, Zero Overflow) */}
+            {/* Custom Mobile Category Selector (Matching Image 2: Clean 1-Line Labels) */}
             <div className="dynamic-mobile-category-select" ref={dropdownRef}>
               <button 
                 type="button"
@@ -168,22 +167,15 @@ export default function DynamicPricingSection({ navigateTo }) {
                 aria-expanded={isDropdownOpen}
                 aria-label="Choose platform category"
               >
-                <div className="dynamic-select-current-item">
-                  <div className="dynamic-select-icon-box">
-                    <currentCategory.icon size={16} />
-                  </div>
-                  <div className="dynamic-select-text-group">
-                    <span className="dynamic-select-main-label">{currentCategory.label}</span>
-                    <span className="dynamic-select-sub-label">{currentCategory.subtitle}</span>
-                  </div>
-                </div>
+                <span className="dynamic-select-clean-text">
+                  {CATEGORY_DROPDOWN_LABELS[currentCategory.id] || currentCategory.label}
+                </span>
                 <ChevronDown size={18} className={`dynamic-select-chevron ${isDropdownOpen ? 'rotated' : ''}`} />
               </button>
 
               {isDropdownOpen && (
                 <div className="dynamic-custom-dropdown-popover" role="listbox" aria-label="Platform categories">
                   {CATEGORIES.map(cat => {
-                    const Icon = cat.icon;
                     const isSelected = activeCategory === cat.id;
 
                     return (
@@ -198,16 +190,9 @@ export default function DynamicPricingSection({ navigateTo }) {
                           setIsDropdownOpen(false);
                         }}
                       >
-                        <div className="dynamic-option-icon-box">
-                          <Icon size={16} />
-                        </div>
-                        <div className="dynamic-option-text-wrap">
-                          <span className="dynamic-option-title">{cat.label}</span>
-                          <span className="dynamic-option-desc">{cat.subtitle}</span>
-                        </div>
-                        {isSelected && (
-                          <Check size={16} className="dynamic-option-check-icon" />
-                        )}
+                        <span className="dynamic-option-clean-label">
+                          {CATEGORY_DROPDOWN_LABELS[cat.id]}
+                        </span>
                       </button>
                     );
                   })}

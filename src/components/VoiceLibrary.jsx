@@ -4,6 +4,41 @@ import { PLANS, SAMPLES, demoUrl, normalizePlan } from '../data/offer';
 import { getAssetUrl } from '../utils/assetUrl';
 import { claimPlayback, onOtherPlayback } from '../utils/playback';
 
+const CONTEXT_ROLE_TAGS = {
+  // Bronze (Transactional / Basic Inbound)
+  'bronze-1': 'Transactional Alert',
+  'bronze-2': 'Appointment Reminder',
+  'bronze-3': 'Inbound FAQ',
+  'bronze-4': 'Courier Delivery Alert',
+  // Silver (Conversational Inbound & Reminders)
+  'silver-1': 'Front-Desk Reception',
+  'silver-2': 'Service Booking',
+  'silver-3': 'Event RSVP',
+  'silver-4': 'Verification OTP',
+  'silver-5': 'Support Triage',
+  'silver-6': 'Order Status',
+  'silver-7': 'Billing Desk',
+  'silver-8': 'CSAT Survey',
+  // Gold (High-Conversion Outbound & Multilingual Indic)
+  'gold-1': 'Outbound Cold Calling',
+  'gold-2': 'EMI & Collections (Hindi)',
+  'gold-3': 'Real Estate Booking',
+  'gold-4': 'Supervisor Transfer',
+  'gold-5': 'Healthcare Follow-up',
+  'gold-6': 'B2B Sales Pitch',
+  'gold-7': 'WhatsApp Follow-Up',
+  'gold-8': 'Lead Win-Back',
+  // Platinum (Executive Brand Ambassador - ₹11)
+  'platinum-1': 'Executive Ambassador (₹11)',
+  'platinum-2': '100+ Channel Outbound',
+  'platinum-3': 'Sentiment Empathy',
+  'platinum-4': 'Global Enterprise Desk',
+  'platinum-5': 'VIP Concierge Desk',
+  'platinum-6': 'Sensitive Care Empathy',
+  'platinum-7': 'Strategic Deal Closer',
+  'platinum-8': 'Carrier Core 99.99% SLA'
+};
+
 const time = seconds => `${Math.floor((seconds || 0) / 60)}:${String(Math.floor((seconds || 0) % 60)).padStart(2, '0')}`;
 export default function VoiceLibrary({ compact = false, navigateTo, initialPlan }) {
   const owner = useId();
@@ -39,7 +74,7 @@ export default function VoiceLibrary({ compact = false, navigateTo, initialPlan 
     <div className="voice-library-top"><span><Headphones size={16}/> THE VOICE STUDIO</span><span>PRERECORDED EXAMPLES</span></div>
     <h3>{compact ? 'Hear your next conversation.' : 'A voice that fits your business.'}</h3><p>Compare the sound. Choose a voice. No signup or microphone needed.</p>
     <div className="voice-tier-tabs" role="group" aria-label="Voice plan">{PLANS.map(item => <button key={item.id} type="button" aria-pressed={plan === item.id} onClick={() => select(`${item.id}-1`, item.id)}>{item.name}</button>)}</div>
-    <div className="voice-now-playing"><button className="voice-play" type="button" onClick={play} aria-label={`${status === 'playing' || status === 'loading' ? 'Pause' : 'Play'} ${sample.name} ${sample.tier} sample`}>{status === 'playing' || status === 'loading' ? <Pause size={24}/> : <Play size={24}/>}</button><div><span>{sample.tier} · Voice preview</span><strong>{sample.name}</strong></div><span className="voice-time">{time(elapsed)} / {duration ? time(duration) : '—'}</span></div>
+    <div className="voice-now-playing"><button className="voice-play" type="button" onClick={play} aria-label={`${status === 'playing' || status === 'loading' ? 'Pause' : 'Play'} ${sample.name} ${sample.tier} sample`}>{status === 'playing' || status === 'loading' ? <Pause size={24}/> : <Play size={24}/>}</button><div><span>{sample.tier} · {CONTEXT_ROLE_TAGS[sample.id] || 'Voice preview'}</span><strong>{sample.name}</strong></div><span className="voice-time">{time(elapsed)} / {duration ? time(duration) : '—'}</span></div>
     <div className={`studio-wave-bars ${status === 'playing' ? 'is-playing' : ''}`} aria-hidden="true">{Array.from({length: 36}, (_, i) => <i key={i} style={{'--bar-height': `${24 + (i * 37 % 72)}%`, '--bar-delay': `${i % 6 * .11}s`}}/>)}</div>
     <input className="voice-seek" type="range" min="0" max={duration || 1} step="0.1" value={Math.min(elapsed, duration || 1)} disabled={!duration} aria-label={`Seek within ${sample.name} sample`} aria-valuetext={`${time(elapsed)} of ${time(duration)}`} onChange={event => { audio.current.currentTime = Number(event.target.value); setElapsed(Number(event.target.value)); }}/>
     <div className="voice-options" role="group" aria-label={`${sample.tier} voice choices`}>{options.slice(0, expanded ? options.length : compact ? 2 : 3).map(item => <button type="button" key={item.id} aria-pressed={sampleId === item.id} onClick={() => select(item.id)}>{item.name}</button>)}</div>

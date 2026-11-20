@@ -11,7 +11,8 @@ import {
   PhoneCall, 
   Zap, 
   ShieldCheck, 
-  Users
+  Users,
+  Headphones
 } from 'lucide-react';
 import { Eyebrow } from './StudioParts';
 import { PLANS, MODELS, SAMPLES, demoUrl, rateLabel } from '../data/offer';
@@ -62,43 +63,86 @@ const PLAN_FEATURES = {
   ]
 };
 
-// Real metadata mapping for genuine prerecorded audio files in /samples/
+export const PLAN_QOS = {
+  bronze: {
+    fidelity: '8kHz Telephony',
+    cadence: '~700ms Cadence',
+    engine: 'Standard Intelligible TTS',
+    interruption: 'Sequential Prompts',
+    languages: 'English & Basic Hindi',
+    concurrency: 'Up to 10 Channels',
+    useCase: 'Automated OTPs, Alerts & Basic FAQs',
+    badge: 'Standard Audio'
+  },
+  silver: {
+    fidelity: '16kHz Wideband',
+    cadence: '<500ms Responsive',
+    engine: 'Conversational Neural AI',
+    interruption: 'Natural Turn-Taking',
+    languages: 'English + Standard Hindi',
+    concurrency: 'Up to 30 Channels',
+    useCase: 'Inbound Reception & Routine Follow-Ups',
+    badge: 'Natural Conversational'
+  },
+  gold: {
+    fidelity: '24kHz HD Neural',
+    cadence: '<400ms Sub-Second',
+    engine: 'Multilingual Indic LLM + Voice',
+    interruption: 'Full-Duplex Live Interruption',
+    languages: 'Hinglish + 8 Indian Dialects',
+    concurrency: 'Up to 75 Channels',
+    useCase: 'High-Conversion Outbound Sales Calls',
+    badge: '3.4x Sales Conversion'
+  },
+  platinum: {
+    fidelity: '48kHz Studio Master',
+    cadence: '<300ms Real-Time',
+    engine: 'Human Breath, Empathy & Voice Cloning',
+    interruption: 'Sentiment-Adaptive Empathy',
+    languages: 'Hyper-Local Accents + Custom Clones',
+    concurrency: '100+ Dedicated Channels',
+    useCase: 'Executive Brand Ambassador (₹11)',
+    badge: 'Executive Brand Trust'
+  }
+};
+
+// Context-oriented business call metadata mapping (Sir Review Point 5 & 6)
 const SAMPLE_DETAILS = {
-  // Bronze (bronze-1.mp3 through bronze-4.mp3)
-  'bronze-1': { label: 'Aarav', desc: 'Standard Clear Everyday Assistant' },
-  'bronze-2': { label: 'Diya', desc: 'Crisp Appointment & Reminder Caller' },
-  'bronze-3': { label: 'Kavya', desc: 'Warm Routine Enquiry Answering' },
-  'bronze-4': { label: 'Ananya', desc: 'Gentle Business Greeting Assistant' },
+  // Bronze (bronze-1.mp3 through bronze-4.mp3) - Transactional / Basic Inbound
+  'bronze-1': { label: 'Aarav', desc: '[Transactional] Flight & Booking Status Alert', context: 'Transactional Alert' },
+  'bronze-2': { label: 'Diya', desc: '[Healthcare Alert] Clinic OPD Appointment Reminder', context: 'Appointment Reminder' },
+  'bronze-3': { label: 'Kavya', desc: '[Inbound Info] Working Hours & Location FAQs', context: 'Inbound FAQ' },
+  'bronze-4': { label: 'Ananya', desc: '[Delivery Alert] E-Commerce Order Out for Delivery', context: 'Courier Dispatch' },
 
-  // Silver (silver-1.mp3 through silver-8.mp3)
-  'silver-1': { label: 'Achird', desc: 'Everyday Inbound & Customer Enquiries' },
-  'silver-2': { label: 'Aoede', desc: 'Automated Reminders & Follow-up Calls' },
-  'silver-3': { label: 'Charon', desc: 'Appointment Scheduling & Confirmations' },
-  'silver-4': { label: 'Kore', desc: 'Routine Information & FAQs' },
-  'silver-5': { label: 'Leda', desc: 'Front-Desk Call Answering' },
-  'silver-6': { label: 'Orus', desc: 'Standard Dispatch Assistance' },
-  'silver-7': { label: 'Achernar', desc: 'Direct Customer Outreach' },
-  'silver-8': { label: 'Algenib', desc: 'General Communication Assistant' },
+  // Silver (silver-1.mp3 through silver-8.mp3) - Conversational Inbound & Reminders
+  'silver-1': { label: 'Achird', desc: '[Inbound Reception] Front-Desk Routing & Transfer', context: 'Front-Desk Reception' },
+  'silver-2': { label: 'Aoede', desc: '[Service Reminder] AMC Maintenance & Renewal Booking', context: 'Service Booking' },
+  'silver-3': { label: 'Charon', desc: '[Event RSVP] Corporate Webinar & Summit Invitation', context: 'Event RSVP' },
+  'silver-4': { label: 'Kore', desc: '[Verification] Account Activation & Secondary Authentication', context: 'OTP / Verification' },
+  'silver-5': { label: 'Leda', desc: '[Support Triage] Customer Care First-Line Triage', context: 'Customer Triage' },
+  'silver-6': { label: 'Orus', desc: '[Order Desk] Return & Exchange Verification', context: 'Order Verification' },
+  'silver-7': { label: 'Achernar', desc: '[Billing Desk] Invoice Clarification & Payment Query', context: 'Billing Inbound' },
+  'silver-8': { label: 'Algenib', desc: '[CSAT Survey] Post-Service Customer Satisfaction', context: 'Survey & Feedback' },
 
-  // Gold (gold-1.mp3 through gold-8.mp3)
-  'gold-1': { label: 'Aditya', desc: 'Bilingual Hindi & English Sales Voice' },
-  'gold-2': { label: 'Ritu', desc: 'Indian Regional Dialect & Lead Qualification' },
-  'gold-3': { label: 'Ashutosh', desc: 'Natural Interruption & Support Handling' },
-  'gold-4': { label: 'Priya', desc: 'Warm Human Supervisor Transfer' },
-  'gold-5': { label: 'Neha', desc: 'High-Touch Customer Engagement' },
-  'gold-6': { label: 'Rahul', desc: 'Conversational Sales Booking' },
-  'gold-7': { label: 'Pooja', desc: 'Meta WhatsApp Link & Call Summary' },
-  'gold-8': { label: 'Rohan', desc: 'Indian Dialect High-Conversion Pitch' },
+  // Gold (gold-1.mp3 through gold-8.mp3) - High-Conversion Outbound & Multilingual (Most Popular)
+  'gold-1': { label: 'Aditya', desc: '[Outbound Cold Calling] Bilingual Hindi/English Sales Pitch', context: 'Outbound Cold Call' },
+  'gold-2': { label: 'Ritu', desc: '[EMI Collections] Hindi Payment Reminder + WhatsApp UPI', context: 'EMI & Collections' },
+  'gold-3': { label: 'Ashutosh', desc: '[Real Estate Sales] Budget Qualification & Flat Visit Booking', context: 'Real Estate Sales' },
+  'gold-4': { label: 'Priya', desc: '[Warm Transfer] High-Value Lead with Live Supervisor Handoff', context: 'Supervisor Handoff' },
+  'gold-5': { label: 'Neha', desc: '[Healthcare Care] Post-Consultation Follow-Up & Medicine Guidance', context: 'Healthcare Follow-up' },
+  'gold-6': { label: 'Rahul', desc: '[B2B SaaS Closer] Commercial Telecom Budget Discovery', context: 'B2B Sales Pitch' },
+  'gold-7': { label: 'Pooja', desc: '[WhatsApp Follow-Up] Post-Call Brochure & Deal Closing', context: 'WhatsApp Closing' },
+  'gold-8': { label: 'Rohan', desc: '[Urgent Re-Engagement] Dormant Lead Win-Back & Limited Offer', context: 'Lead Win-Back' },
 
-  // Platinum (platinum-1.mp3 through platinum-8.mp3)
-  'platinum-1': { label: 'Indian Origin 3', desc: 'Expressive Studio Brand Voice' },
-  'platinum-2': { label: 'Indian Origin 2', desc: 'High-Concurrency Outbound Channel' },
-  'platinum-3': { label: 'Indian Origin', desc: 'Speech Sentiment Intelligence' },
-  'platinum-4': { label: 'Roger', desc: 'Executive Authority & Brand Trust' },
-  'platinum-5': { label: 'Sarah', desc: 'Polished Studio Ambassador' },
-  'platinum-6': { label: 'Laura', desc: 'Expressive Customer Care Voice' },
-  'platinum-7': { label: 'Charlie', desc: 'Dynamic Corporate Conversationalist' },
-  'platinum-8': { label: 'George', desc: 'Enterprise Global SLA Audio' }
+  // Platinum (platinum-1.mp3 through platinum-8.mp3) - Executive Brand Ambassador & Enterprise High-Trust (₹11)
+  'platinum-1': { label: 'Indian Origin 3', desc: '[Executive Ambassador] High-Trust BFSI & Wealth Management', context: 'Executive Sales' },
+  'platinum-2': { label: 'Indian Origin 2', desc: '[100+ Channel High-Priority] Urgent Enterprise Announcement', context: 'High-Concurrency Outbound' },
+  'platinum-3': { label: 'Indian Origin', desc: '[Sentiment Intelligence] Adaptive Empathy for Customer Escalations', context: 'Crisis Escalation' },
+  'platinum-4': { label: 'Roger', desc: '[Global Corporate Desk] International B2B Executive Account Care', context: 'Global Enterprise' },
+  'platinum-5': { label: 'Sarah', desc: '[Luxury Concierge] VIP Hospitality & High-Touch Inbound Desk', context: 'VIP Concierge' },
+  'platinum-6': { label: 'Laura', desc: '[Expressive Empathy] Patient Oncology & Care Coordination', context: 'Sensitive Care' },
+  'platinum-7': { label: 'Charlie', desc: '[Enterprise SaaS Closer] Multi-Stakeholder Enterprise Contract', context: 'Strategic Closing' },
+  'platinum-8': { label: 'George', desc: '[Dedicated Carrier SLA] Mission-Critical 99.99% Telecom Core Calling', context: 'Carrier Core SLA' }
 };
 
 const formatTime = (secs) => {
@@ -110,6 +154,7 @@ const formatTime = (secs) => {
 
 export default function PlanCards({ navigateTo }) {
   const [model, setModel] = useState('modular');
+  const [showQosTable, setShowQosTable] = useState(false);
   const [openDropdownCard, setOpenDropdownCard] = useState(null); // 'bronze' | 'silver' | 'gold' | 'platinum' | null
   const [activeSampleByCard, setActiveSampleByCard] = useState({
     bronze: 'bronze-1',
@@ -328,11 +373,107 @@ export default function PlanCards({ navigateTo }) {
           </div>
         </div>
 
-        {/* The 3 Cards: SILVER | GOLD | PLATINUM / DIAMOND */}
+        {/* QoS Value Guidance Banner (Sir Review Point 3 & 4) */}
+        <div className="qos-retention-banner">
+          <div className="qos-banner-body">
+            <div className="qos-banner-icon-box">
+              <Headphones size={22} />
+            </div>
+            <div className="qos-banner-text">
+              <h4 className="qos-banner-title">
+                Why Upgrade to Gold &amp; Platinum? Real Acoustic &amp; Conversion QoS.
+              </h4>
+              <p className="qos-banner-desc">
+                Lower tiers use standard telephony TTS ideal for automated OTPs and reminders. For high-conversion outbound cold calling and human-grade customer care, Gold &amp; Platinum deliver 24kHz HD neural audio, natural breath cadence, and live customer interruption that callers can&apos;t distinguish from human agents — delivering 3.4x higher sales booking rates.
+              </p>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            className="qos-toggle-btn"
+            onClick={() => setShowQosTable(prev => !prev)}
+            aria-expanded={showQosTable}
+          >
+            <span>{showQosTable ? 'Hide QoS Parameters ↑' : 'Compare QoS Parameters ↓'}</span>
+          </button>
+        </div>
+
+        {/* Collapsible Quality of Service (QoS) Parameter Matrix */}
+        {showQosTable && (
+          <div className="qos-matrix-card animate-fade-in" role="region" aria-label="Quality of Service Parameter Comparison">
+            <div className="qos-table-scroll-wrap">
+              <table className="qos-comparison-table">
+                <thead>
+                  <tr>
+                    <th>Quality Parameter</th>
+                    <th>Bronze (₹3.50/m)</th>
+                    <th>Silver (₹5.00/m)</th>
+                    <th className="th-featured">Gold · Recommended (₹9.00/m)</th>
+                    <th>Platinum · Executive (₹11.00/m)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Voice Synthesis Engine</strong></td>
+                    <td>Standard Intelligible TTS</td>
+                    <td>Conversational Neural AI</td>
+                    <td className="td-featured">Multilingual Indic LLM + Neural</td>
+                    <td>Emotion, Breath &amp; Voice Cloning</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Audio Fidelity / Sampling</strong></td>
+                    <td>8kHz Standard Telephony</td>
+                    <td>16kHz Wideband Voice</td>
+                    <td className="td-featured"><strong>24kHz HD Studio Voice</strong></td>
+                    <td><strong>48kHz Ultra-Expressive Master</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Response Turn Latency</strong></td>
+                    <td>~700ms Sequential Cadence</td>
+                    <td>&lt;500ms Responsive Cadence</td>
+                    <td className="td-featured">&lt;400ms Sub-Second Natural</td>
+                    <td>&lt;300ms Real-Time Human Cadence</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Interruption &amp; Turn-Taking</strong></td>
+                    <td>Sequential Prompts</td>
+                    <td>Natural Turn-Taking</td>
+                    <td className="td-featured">Full-Duplex Live Interruption</td>
+                    <td>Sentiment-Adaptive Empathy Cadence</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Language &amp; Dialect Depth</strong></td>
+                    <td>English &amp; Basic Hindi</td>
+                    <td>English + Standard Hindi</td>
+                    <td className="td-featured">Hinglish + 8 Indian Dialects</td>
+                    <td>Hyper-Local Accents + Custom Clones</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dedicated Channel Concurrency</strong></td>
+                    <td>Up to 10 Channels</td>
+                    <td>Up to 30 Channels</td>
+                    <td className="td-featured">Up to 75 Channels</td>
+                    <td>100+ Dedicated Outbound Channels</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Recommended Business Role</strong></td>
+                    <td>OTPs, Alerts &amp; Simple FAQs</td>
+                    <td>Inbound Reception &amp; Reminders</td>
+                    <td className="td-featured"><strong>Outbound Cold Calls &amp; Sales Deals</strong></td>
+                    <td><strong>Executive Brand Ambassador (₹11)</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* The 4 Plan Cards: BRONZE | SILVER | GOLD | PLATINUM */}
         <div className="studio-plan-grid conversion-plan-grid">
           {PLANS.map(plan => {
             const isGold = plan.id === 'gold';
             const isDropdownOpen = openDropdownCard === plan.id;
+            const qosInfo = PLAN_QOS[plan.id] || PLAN_QOS.silver;
             
             // Available genuine audio samples from /samples/ manifest for this plan
             const tierSamples = SAMPLES.filter(s => s.plan === plan.id);
@@ -361,6 +502,19 @@ export default function PlanCards({ navigateTo }) {
                   <div className="studio-plan-symbol" aria-hidden="true">{plan.icon}</div>
                   <h3 className="plan-main-title">{CARD_TITLES[plan.id] || `AVYUKTA AI ${plan.name.toUpperCase()}`}</h3>
                   <p>{plan.description}</p>
+
+                  {/* QoS Badge Strip */}
+                  <div className="card-qos-pills-row">
+                    <span className="card-qos-pill card-qos-fidelity" title="Audio Fidelity">
+                      {qosInfo.fidelity.split(' ')[0]}
+                    </span>
+                    <span className="card-qos-pill card-qos-cadence" title="Response Latency">
+                      {qosInfo.cadence.split(' ')[0]}
+                    </span>
+                    <span className="card-qos-pill card-qos-usecase" title="Optimal Business Job">
+                      {qosInfo.badge}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="studio-plan-price">
