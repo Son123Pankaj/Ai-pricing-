@@ -6399,16 +6399,28 @@ img, svg, video, canvas {
 
 .hero-girl-halo {
   position: absolute !important;
-  top: 0 !important;
+  top: -30px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: 260px !important;
-  height: 260px !important;
+  width: 520px !important;
+  height: 520px !important;
   border-radius: 50% !important;
-  background: radial-gradient(circle, rgba(18, 221, 226, 0.22) 0%, rgba(0, 165, 174, 0.1) 45%, transparent 70%) !important;
-  filter: blur(35px) !important;
+  background: radial-gradient(circle, rgba(18, 221, 226, 0.32) 0%, rgba(0, 165, 174, 0.18) 45%, transparent 72%) !important;
+  filter: blur(55px) !important;
   z-index: 1 !important;
   pointer-events: none !important;
+  animation: heroHaloPulse 6s ease-in-out infinite alternate !important;
+}
+
+@keyframes heroHaloPulse {
+  0% {
+    transform: translateX(-50%) scale(0.96);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.06);
+    opacity: 1;
+  }
 }
 
 .hero-girl-frame {
@@ -6418,19 +6430,29 @@ img, svg, video, canvas {
   justify-content: center !important;
   align-items: flex-end !important;
   width: 100% !important;
-  max-width: 320px !important;
-  margin: 0 auto -55px !important;
+  max-width: 600px !important;
+  margin: 0 auto -105px !important;
 }
 
 .hero-girl-img {
-  width: clamp(190px, 18vw, 280px) !important;
+  width: clamp(340px, 36vw, 540px) !important;
   height: auto !important;
-  max-height: 235px !important;
+  max-height: 460px !important;
   object-fit: contain !important;
   display: block !important;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.45)) !important;
-  mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
-  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%) !important;
+  filter: 
+    drop-shadow(0 20px 45px rgba(0, 0, 0, 0.7)) 
+    drop-shadow(0 0 35px rgba(18, 221, 226, 0.28)) !important;
+  mask-image: linear-gradient(to bottom, black 82%, transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease !important;
+}
+
+.hero-girl-frame:hover .hero-girl-img {
+  transform: translateY(-4px) scale(1.015) !important;
+  filter: 
+    drop-shadow(0 25px 55px rgba(0, 0, 0, 0.8)) 
+    drop-shadow(0 0 45px rgba(18, 221, 226, 0.38)) !important;
 }
 
 .hero-voice-studio-wrap {
@@ -6698,7 +6720,16 @@ img, svg, video, canvas {
     justify-content: center !important;
   }
   .hero-girl-frame {
-    margin: 10px auto -40px !important;
+    max-width: 480px !important;
+    margin: 10px auto -85px !important;
+  }
+  .hero-girl-img {
+    width: clamp(300px, 45vw, 440px) !important;
+    max-height: 390px !important;
+  }
+  .hero-girl-halo {
+    width: 420px !important;
+    height: 420px !important;
   }
   .hero-voice-studio-wrap {
     max-width: 100% !important;
@@ -6743,13 +6774,18 @@ img, svg, video, canvas {
   .hero-trust-tag {
     font-size: 11.5px !important;
   }
-  /* Female AI Caller image scaled cleanly, horizontally centered, no overflow */
-  .hero-girl-img {
-    max-height: 200px !important;
-    width: clamp(170px, 46vw, 230px) !important;
+  /* Female AI Caller image: prominently sized, centered, beautiful halo, zero overflow */
+  .hero-girl-halo {
+    width: 320px !important;
+    height: 320px !important;
   }
   .hero-girl-frame {
-    margin: 12px auto -30px !important;
+    max-width: 380px !important;
+    margin: 10px auto -60px !important;
+  }
+  .hero-girl-img {
+    max-height: 310px !important;
+    width: clamp(230px, 68vw, 330px) !important;
   }
   /* Remove rotation on mobile so card borders never poke outside screen */
   .voice-studio-decorative-tilt {
@@ -6794,12 +6830,17 @@ img, svg, video, canvas {
   .hero-title {
     font-size: 1.6rem !important;
   }
-  .hero-girl-img {
-    max-height: 175px !important;
-    width: 160px !important;
+  .hero-girl-halo {
+    width: 250px !important;
+    height: 250px !important;
   }
   .hero-girl-frame {
-    margin: 10px auto -25px !important;
+    max-width: 300px !important;
+    margin: 8px auto -45px !important;
+  }
+  .hero-girl-img {
+    max-height: 250px !important;
+    width: clamp(190px, 68vw, 260px) !important;
   }
   .hero-voice-studio-wrap .voice-tier-tabs button {
     font-size: 10px !important;
