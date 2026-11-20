@@ -785,7 +785,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
  .studio-inner-hero p {font-size:16px}
  .studio-inner-visual {height:250px;border-radius:21px;border-width:5px}
  .studio-plan-section {padding-top:50px}
- .studio-plan-toggle {width:100%;justify-content:space-between}
+ .studio-plan-toggle {width:fit-content;max-width:95%;margin:0 auto 24px}
  .studio-plan-toggle button {flex:1;justify-content:center;padding:10px 6px;font-size:12px}
  .studio-plan-card-top {min-height:145px}
  .studio-plan-conditions {gap:12px}
@@ -7120,6 +7120,9 @@ img, svg, video, canvas {
 /* Task 4: Compact Horizontal Segmented Pricing Mode Toggle */
 .studio-plan-toggle {
   display: inline-flex !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  align-self: center !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;

@@ -8,8 +8,8 @@ export const PLANS = [
   { id: 'platinum', name: 'Platinum', label: 'Expressive brand voices', description: 'Explore expressive voices for conversations where tone matters.', modular: 11, bundle: 13.5, icon: 'P', features: ['Compare expressive studio voices', 'Discuss custom voice requirements', 'Confirm the right setup for your brand'] },
 ];
 export const MODELS = {
-  modular: { label: 'AI usage only', detail: 'Phone connection, number rental and WhatsApp services are charged separately.' },
-  bundle: { label: 'AI + calling package', detail: 'Package scope, phone charges, CRM and WhatsApp allowances must be confirmed in your quote.' },
+  modular: { label: 'AI Minutes', detail: 'Phone connection, number rental and WhatsApp services are charged separately.' },
+  bundle: { label: 'All-in-One Package', detail: 'Package scope, phone charges, CRM and WhatsApp allowances must be confirmed in your quote.' },
 };
 export const COMMERCIAL_NOTE = 'Indicative rates from the existing offer, excluding GST. Referenced offers require a ₹10,000 initial recharge and may require 1,00,000+ minutes per month. Confirm eligibility, fixed fees, deposits and complete cost before activation.';
 export const SAMPLES = PLANS.flatMap(plan => manifest[plan.id].map((sample, index) => ({ id: `${plan.id}-${index + 1}`, plan: plan.id, tier: plan.name, name: sample.name.replaceAll('_', ' '), src: `/samples/${sample.file}` })));
