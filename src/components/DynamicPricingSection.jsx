@@ -415,16 +415,18 @@ export default function DynamicPricingSection({ navigateTo }) {
                   <span>Inspect Fullscreen</span>
                 </button>
 
-                <img 
-                  src={getAssetUrl(currentSnapshot.src)} 
-                  alt={currentSnapshot.alt || currentCategory.fullForm}
-                  className="dynamic-full-image"
-                  onClick={() => setIsLightboxOpen(true)}
-                  style={{ cursor: 'zoom-in' }}
-                  title="Click to open fullscreen modal preview"
-                  loading="eager"
-                  decoding="async"
-                />
+                <div className="dynamic-image-viewer-container">
+                  <img 
+                    src={getAssetUrl(currentSnapshot.src)} 
+                    alt={currentSnapshot.alt || currentCategory.fullForm}
+                    className="dynamic-full-image"
+                    onClick={() => setIsLightboxOpen(true)}
+                    style={{ cursor: 'zoom-in' }}
+                    title="Click to open fullscreen modal preview"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
 
                 {currentSnapshot.caption && (
                   <div className="snapshot-caption-bar">
