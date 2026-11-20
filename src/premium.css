@@ -7712,3 +7712,53 @@ img, svg, video, canvas {
     width: 100% !important;
   }
 }
+
+/* ============================================================ */
+/* AI CALL SAFETY & BILLING PROTECTION SECTION                  */
+/* ============================================================ */
+.call-safety-section {
+  padding: 90px 0 100px;
+  background: var(--studio-bg);
+  position: relative;
+  border-top: 1px solid var(--studio-stroke);
+}
+
+.call-safety-section .safety-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.call-safety-section .safety-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(18, 221, 226, 0.45) !important;
+  box-shadow: 0 16px 36px -10px rgba(18, 221, 226, 0.15) !important;
+}
+
+[data-theme="light"] .call-safety-section .safety-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f4fbfb 100%) !important;
+  border: 1px solid rgba(0, 165, 174, 0.2) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .call-safety-section .safety-card h3 {
+  color: #031F2B !important;
+}
+
+[data-theme="light"] .call-safety-section .safety-card p {
+  color: #4b6a77 !important;
+}
+
+[data-theme="light"] .call-safety-header h2 {
+  color: #031F2B !important;
+}
+
+[data-theme="light"] .call-safety-header p {
+  color: #4b6a77 !important;
+}
+
+[data-theme="light"] .call-safety-section strong {
+  color: #031F2B !important;
+}
+
+[data-theme="light"] .call-safety-section strong + span {
+  color: #4b6a77 !important;
+}

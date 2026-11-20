@@ -10,7 +10,7 @@ const LINKS = [
   { label: 'Why Us', href: '/#why-avyukta', id: 'why-avyukta', aliases: ['why-us'] },
   { label: 'Automation', href: '/#automation-showcase', id: 'automation-showcase', aliases: ['automation', 'features'] },
   { label: 'Industries', href: '/#industries', id: 'industries', aliases: [] },
-  { label: 'Voice Samples', href: '/#voice-samples', id: 'voice-samples', aliases: ['samples'] },
+  { label: 'Call Safety', href: '/#call-safety', id: 'call-safety', aliases: ['billing-safety', 'safety'] },
   { label: 'FAQs', href: '/#faq', id: 'faq', aliases: [] },
 ];
 
@@ -26,7 +26,7 @@ const ALL_SECTIONS = [
   { id: 'automation-showcase', navId: 'automation-showcase' },
   { id: 'automation', navId: 'automation-showcase' },
   { id: 'industries', navId: 'industries' },
-  { id: 'voice-samples', navId: 'voice-samples' },
+  { id: 'call-safety', navId: 'call-safety' },
   { id: 'faq', navId: 'faq' }
 ];
 

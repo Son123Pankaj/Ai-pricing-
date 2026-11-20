@@ -47,10 +47,10 @@
   text-align: center;
 }
 
-/* 2. Interactive 12 Category Cards Grid */
+/* 2. Interactive 6 Category Cards Grid */
 .auto-categories-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 40px;
 }
