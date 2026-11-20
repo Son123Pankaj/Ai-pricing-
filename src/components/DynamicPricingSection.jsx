@@ -4,7 +4,12 @@ import {
   Users, 
   LayoutDashboard, 
   TrendingUp,
-  ChevronDown
+  ChevronDown,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Camera
 } from 'lucide-react';
 import { Eyebrow } from './StudioParts';
 import { getAssetUrl } from '../utils/assetUrl';
@@ -25,7 +30,8 @@ const CATEGORIES = [
     subtitle: 'Process Automation', 
     icon: Workflow,
     fullForm: 'Business Process Automation (BPA)',
-    image: '/avyukta-platform-workflow.png'
+    image: '/avyukta-platform-workflow.png',
+    snapshotCount: 3
   },
   { 
     id: 'crm', 
@@ -33,7 +39,8 @@ const CATEGORIES = [
     subtitle: 'Customer Platform', 
     icon: Users,
     fullForm: 'Customer Relationship Management (CRM)',
-    image: '/crm-platform-pricing-promo.png'
+    image: '/crm-platform-pricing-promo.png',
+    snapshotCount: 4
   },
   { 
     id: 'command-center', 
@@ -41,7 +48,8 @@ const CATEGORIES = [
     subtitle: 'Operations & Monitoring', 
     icon: LayoutDashboard,
     fullForm: 'Command Center',
-    image: '/command-center-operations.jpg'
+    image: '/command-center-operations.jpg',
+    snapshotCount: 3
   },
   { 
     id: 'sales', 
@@ -49,36 +57,119 @@ const CATEGORIES = [
     subtitle: 'Pipeline & Deals', 
     icon: TrendingUp,
     fullForm: 'Sales Management & Customer Journey (Sales)',
-    image: '/sales-management-dashboard.jpg'
+    image: '/sales-management-dashboard.jpg',
+    snapshotCount: 3
   },
 ];
 
-// CRM Multi-Image Views (Only 1 displayed at a time)
-const CRM_VIEWS = [
-  {
-    id: 0,
-    label: '1. CRM Platform',
-    src: '/crm-platform-pricing-promo.png',
-    alt: 'Avyukta CRM Platform pricing and omnichannel calling dashboard'
-  },
-  {
-    id: 1,
-    label: '2. Communications',
-    src: '/avyukta-communications-dashboard.png',
-    alt: 'Avyukta CRM omnichannel communications and activity dashboard'
-  },
-  {
-    id: 2,
-    label: '3. Employee Workspace',
-    src: '/crm-employee-dashboard.jpg',
-    alt: 'Avyukta CRM employee workspace, activity insights and telephony extension directory'
-  }
-];
+// Rich In-Page Product Snapshots with Hover & Lightbox Previews (Sir Review Point 10)
+const CATEGORY_SNAPSHOTS = {
+  bpa: [
+    {
+      id: 0,
+      label: '1. Workflow Orchestration',
+      src: '/avyukta-platform-workflow.png',
+      alt: 'Avyukta BPA multi-step telephony and automated webhook workflow architecture',
+      caption: 'Visual workflow builder: connect triggers, AI call branches, and SMS/WhatsApp follow-ups with zero code.'
+    },
+    {
+      id: 1,
+      label: '2. Process Journey Map',
+      src: '/bpa-workflow.jpg',
+      alt: 'Avyukta Business Process Automation customer journey flow',
+      caption: 'End-to-end customer journey logic: automated lead dialer, qualification scoring, and disposition updates.'
+    },
+    {
+      id: 2,
+      label: '3. Automation Rules & Actions',
+      src: '/features-automation.jpg',
+      alt: 'Avyukta automation rules, trigger schedules and API integrations',
+      caption: 'Trigger conditional API webhooks, schedule recurring campaigns, and synchronize with 50+ enterprise CRMs.'
+    }
+  ],
+  crm: [
+    {
+      id: 0,
+      label: '1. CRM Platform & Pricing',
+      src: '/crm-platform-pricing-promo.png',
+      alt: 'Avyukta CRM Platform pricing and omnichannel calling dashboard',
+      caption: 'Unified contact center CRM: omni-channel telephony, transparent per-minute ledger, and live agent status.'
+    },
+    {
+      id: 1,
+      label: '2. Live Call Communications',
+      src: '/avyukta-communications-dashboard.png',
+      alt: 'Avyukta CRM omnichannel communications and activity dashboard',
+      caption: 'Real-time call transcripts, automated recording playback, customer sentiment metrics, and follow-up notes.'
+    },
+    {
+      id: 2,
+      label: '3. Agent Extension Directory',
+      src: '/crm-employee-dashboard.jpg',
+      alt: 'Avyukta CRM employee workspace, activity insights and telephony extension directory',
+      caption: 'Multi-seat extension management, live SIP registration monitoring, and agent productivity KPIs.'
+    },
+    {
+      id: 3,
+      label: '4. Contact Center Queues',
+      src: '/crm-contact-center-channels.jpg',
+      alt: 'Avyukta contact center channels and intelligent skill-based routing',
+      caption: 'Skill-based ACD routing, inbound toll-free IVR queues, and multi-channel campaign dispatch.'
+    }
+  ],
+  'command-center': [
+    {
+      id: 0,
+      label: '1. Live Operations Console',
+      src: '/command-center-operations.jpg',
+      alt: 'Avyukta live operations command center, active calls and SIP trunk NOC',
+      caption: 'Mission-control NOC: track concurrent voice channels, live jitter/packet loss, and carrier trunk uptime.'
+    },
+    {
+      id: 1,
+      label: '2. 99.99% Carrier Telecom NOC',
+      src: '/about-telecom-noc.jpg',
+      alt: 'Avyukta 99.99% Carrier-grade telecom network operations center',
+      caption: 'Tier-3 telephony infrastructure with sub-500ms voice cadence and redundant Pan-India STD CLI routes.'
+    },
+    {
+      id: 2,
+      label: '3. High-Availability Core',
+      src: '/telecom-datacenter.jpg',
+      alt: 'Avyukta enterprise datacenter and secure telephony switching cluster',
+      caption: 'Enterprise SIP cluster engineered for zero runaway bill guarantee and strict auto-disconnect safety.'
+    }
+  ],
+  sales: [
+    {
+      id: 0,
+      label: '1. Sales Pipeline & Velocity',
+      src: '/sales-management-dashboard.jpg',
+      alt: 'Avyukta sales management pipeline, conversion stages and deal analytics',
+      caption: 'Real-time deal velocity tracker: auto-classify inbound leads into Hot, Warm, and Cold with automated next actions.'
+    },
+    {
+      id: 1,
+      label: '2. Outbound ROI & Unit Economics',
+      src: '/call-center-profit.jpg',
+      alt: 'Avyukta call center ROI analysis and per-minute telephony economics',
+      caption: 'Measurable cost savings: compare traditional call center agent overhead versus AI voice automation.'
+    },
+    {
+      id: 2,
+      label: '3. Predictive Cloud Dialer Console',
+      src: '/dialer-india-hero.jpg',
+      alt: 'Avyukta high-velocity predictive dialing console and campaign manager',
+      caption: 'Blast 100+ concurrent channels with automated AMD (Answering Machine Detection) and live agent transfer.'
+    }
+  ]
+};
 
 export default function DynamicPricingSection({ navigateTo }) {
   const [activeCategory, setActiveCategory] = useState('bpa');
-  const [crmView, setCrmView] = useState(0); // 0: CRM Platform, 1: Communications, 2: Employee Workspace
+  const [snapshotIdx, setSnapshotIdx] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const tabRefs = useRef([]);
   const dropdownRef = useRef(null);
 
@@ -103,10 +194,33 @@ export default function DynamicPricingSection({ navigateTo }) {
     };
   }, [isDropdownOpen]);
 
+  // Handle keyboard navigation inside in-page lightbox (Escape, ArrowLeft, ArrowRight)
+  useEffect(() => {
+    if (!isLightboxOpen) return undefined;
+    const handleLightboxKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false);
+      } else if (e.key === 'ArrowRight') {
+        const snaps = CATEGORY_SNAPSHOTS[activeCategory] || [];
+        setSnapshotIdx(prev => (prev + 1) % snaps.length);
+      } else if (e.key === 'ArrowLeft') {
+        const snaps = CATEGORY_SNAPSHOTS[activeCategory] || [];
+        setSnapshotIdx(prev => (prev - 1 + snaps.length) % snaps.length);
+      }
+    };
+    document.addEventListener('keydown', handleLightboxKeyDown);
+    return () => document.removeEventListener('keydown', handleLightboxKeyDown);
+  }, [isLightboxOpen, activeCategory]);
+
   const currentCategory = CATEGORIES.find(c => c.id === activeCategory) || CATEGORIES[0];
-  const displayImage = activeCategory === 'crm' 
-    ? (CRM_VIEWS[crmView]?.src || currentCategory.image)
-    : currentCategory.image;
+  const currentSnapshots = CATEGORY_SNAPSHOTS[activeCategory] || CATEGORY_SNAPSHOTS.bpa;
+  const currentSnapshot = currentSnapshots[snapshotIdx] || currentSnapshots[0];
+
+  const handleCategoryChange = (catId) => {
+    setActiveCategory(catId);
+    setSnapshotIdx(0);
+    setIsDropdownOpen(false);
+  };
 
   // Keyboard navigation for vertical categories
   const handleKeyDown = (e, index) => {
@@ -123,7 +237,7 @@ export default function DynamicPricingSection({ navigateTo }) {
       return;
     }
     e.preventDefault();
-    setActiveCategory(CATEGORIES[nextIndex].id);
+    handleCategoryChange(CATEGORIES[nextIndex].id);
     tabRefs.current[nextIndex]?.focus();
   };
 
@@ -135,12 +249,18 @@ export default function DynamicPricingSection({ navigateTo }) {
         
         {/* Section Heading */}
         <div className="dynamic-section-heading">
-          <Eyebrow>DYNAMIC PLATFORM &amp; PRICING WORKSPACE</Eyebrow>
+          <div className="dynamic-eyebrow-row">
+            <Eyebrow>DYNAMIC PLATFORM &amp; PRICING WORKSPACE</Eyebrow>
+            <span className="snapshot-total-pill">
+              <Camera size={13} />
+              <span>13 Live Product Snapshots · Hover to Preview</span>
+            </span>
+          </div>
           <h2 className="dynamic-section-title">
             One Connected Workspace. <span className="studio-accent">Four Core Solutions.</span>
           </h2>
           <p className="dynamic-section-desc">
-            Explore Avyukta&apos;s process automation, customer CRM, live operations command center, and sales pipeline management. Select any category to view its dedicated architecture.
+            Explore Avyukta&apos;s process automation, customer CRM, live operations command center, and sales pipeline management. Hover over any snapshot to inspect interface details without leaving the page.
           </p>
         </div>
 
@@ -185,10 +305,7 @@ export default function DynamicPricingSection({ navigateTo }) {
                         role="option"
                         aria-selected={isSelected}
                         className={`dynamic-custom-option-item ${isSelected ? 'selected' : ''}`}
-                        onClick={() => {
-                          setActiveCategory(cat.id);
-                          setIsDropdownOpen(false);
-                        }}
+                        onClick={() => handleCategoryChange(cat.id)}
                       >
                         <span className="dynamic-option-clean-label">
                           {CATEGORY_DROPDOWN_LABELS[cat.id]}
@@ -222,14 +339,18 @@ export default function DynamicPricingSection({ navigateTo }) {
                     aria-controls={`cat-panel-${cat.id}`}
                     tabIndex={isSelected ? 0 : -1}
                     className={`dynamic-category-tab ${isSelected ? 'active' : ''}`}
-                    onClick={() => setActiveCategory(cat.id)}
+                    onClick={() => handleCategoryChange(cat.id)}
+                    onMouseEnter={() => handleCategoryChange(cat.id)}
                     onKeyDown={e => handleKeyDown(e, idx)}
                   >
                     <div className="cat-tab-icon-wrap">
                       <Icon size={19} className="cat-icon" />
                     </div>
                     <div className="cat-tab-text">
-                      <span className="cat-tab-label">{cat.label}</span>
+                      <div className="cat-tab-label-row">
+                        <span className="cat-tab-label">{cat.label}</span>
+                        <span className="cat-tab-count">{cat.snapshotCount} views</span>
+                      </div>
                       <span className="cat-tab-sub">{cat.subtitle}</span>
                     </div>
                     {isSelected && <span className="cat-active-indicator" aria-hidden="true" />}
@@ -246,8 +367,7 @@ export default function DynamicPricingSection({ navigateTo }) {
           </aside>
 
           {/* ========================================================= */}
-          {/* 2. DYNAMIC CONTENT ON SELECTION */}
-          {/* STRICT REQUIREMENT: Only H1 heading (full form) + complete image. Nothing else. */}
+          {/* 2. DYNAMIC CONTENT & PRODUCT SNAPSHOTS */}
           {/* ========================================================= */}
           <main 
             id={`cat-panel-${activeCategory}`}
@@ -257,50 +377,136 @@ export default function DynamicPricingSection({ navigateTo }) {
           >
             <div 
               className="dynamic-category-view animate-fade-in" 
-              key={`${activeCategory}-${activeCategory === 'crm' ? crmView : 0}`}
+              key={`${activeCategory}-${snapshotIdx}`}
             >
               <div className="dynamic-view-title-row">
                 <h1 className="dynamic-view-title">{currentCategory.fullForm}</h1>
 
-                {/* CRM Image Toggle Controls: Display only one image at a time */}
-                {activeCategory === 'crm' && (
-                  <div className="crm-image-toggle-bar" role="tablist" aria-label="CRM View Options">
-                    {CRM_VIEWS.map((view, idx) => (
-                      <button
-                        key={view.id}
-                        type="button"
-                        role="tab"
-                        id={`crm-tab-${idx + 1}`}
-                        aria-selected={crmView === idx}
-                        className={`crm-toggle-btn ${crmView === idx ? 'active' : ''}`}
-                        onClick={() => setCrmView(idx)}
-                      >
-                        {view.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                {/* In-Page Snapshot Tabs (Hover or Click to Preview - Sir Review Point 10) */}
+                <div className="product-snapshot-bar" role="tablist" aria-label={`${currentCategory.label} views`}>
+                  {currentSnapshots.map((snap, idx) => (
+                    <button
+                      key={snap.id}
+                      type="button"
+                      role="tab"
+                      id={`snap-tab-${idx + 1}`}
+                      aria-selected={snapshotIdx === idx}
+                      className={`snapshot-tab-btn ${snapshotIdx === idx ? 'active' : ''}`}
+                      onClick={() => setSnapshotIdx(idx)}
+                      onMouseEnter={() => setSnapshotIdx(idx)}
+                      title={`Preview ${snap.label}`}
+                    >
+                      {snap.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
+              {/* Snapshot Media Frame with Zoom-In Overlay */}
               <div className="dynamic-media-frame">
+                <button 
+                  type="button" 
+                  className="snapshot-zoom-trigger"
+                  onClick={() => setIsLightboxOpen(true)}
+                  title="Click to inspect in fullscreen lightbox (no tab navigation)"
+                  aria-label="Inspect snapshot in fullscreen lightbox"
+                >
+                  <Maximize2 size={15} />
+                  <span>Inspect Fullscreen</span>
+                </button>
+
                 <img 
-                  src={getAssetUrl(displayImage)} 
-                  alt={activeCategory === 'crm' 
-                    ? (CRM_VIEWS[crmView]?.alt || currentCategory.fullForm)
-                    : currentCategory.fullForm}
+                  src={getAssetUrl(currentSnapshot.src)} 
+                  alt={currentSnapshot.alt || currentCategory.fullForm}
                   className="dynamic-full-image"
-                  onClick={activeCategory === 'crm' ? () => setCrmView(v => (v + 1) % CRM_VIEWS.length) : undefined}
-                  style={activeCategory === 'crm' ? { cursor: 'pointer' } : undefined}
-                  title={activeCategory === 'crm' ? 'Click to cycle to next CRM view' : undefined}
+                  onClick={() => setIsLightboxOpen(true)}
+                  style={{ cursor: 'zoom-in' }}
+                  title="Click to open fullscreen modal preview"
                   loading="eager"
                   decoding="async"
                 />
+
+                {currentSnapshot.caption && (
+                  <div className="snapshot-caption-bar">
+                    <span className="caption-tag">FEATURE INSIGHT:</span>
+                    <span className="caption-text">{currentSnapshot.caption}</span>
+                  </div>
+                )}
               </div>
             </div>
           </main>
         </div>
 
       </div>
+
+      {/* ========================================================= */}
+      {/* 3. IN-PAGE LIGHTBOX MODAL (Zero tab redirection, zero lost user) */}
+      {/* ========================================================= */}
+      {isLightboxOpen && (
+        <div 
+          className="snapshot-lightbox-overlay" 
+          role="dialog" 
+          aria-modal="true" 
+          aria-label={currentSnapshot.alt}
+          onClick={(e) => {
+            if (e.target.classList.contains('snapshot-lightbox-overlay')) {
+              setIsLightboxOpen(false);
+            }
+          }}
+        >
+          <div className="snapshot-lightbox-dialog">
+            <div className="snapshot-lightbox-header">
+              <div>
+                <span className="lightbox-category-tag">{currentCategory.fullForm}</span>
+                <h3 className="lightbox-title">{currentSnapshot.label}</h3>
+              </div>
+              <button 
+                type="button" 
+                className="lightbox-close-btn"
+                onClick={() => setIsLightboxOpen(false)}
+                aria-label="Close fullscreen snapshot view"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="snapshot-lightbox-content">
+              <button 
+                type="button" 
+                className="lightbox-nav-btn lightbox-nav-prev"
+                onClick={() => setSnapshotIdx(prev => (prev - 1 + currentSnapshots.length) % currentSnapshots.length)}
+                aria-label="Previous snapshot"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              <div className="snapshot-lightbox-img-wrap">
+                <img 
+                  src={getAssetUrl(currentSnapshot.src)} 
+                  alt={currentSnapshot.alt} 
+                  className="lightbox-img" 
+                />
+              </div>
+
+              <button 
+                type="button" 
+                className="lightbox-nav-btn lightbox-nav-next"
+                onClick={() => setSnapshotIdx(prev => (prev + 1) % currentSnapshots.length)}
+                aria-label="Next snapshot"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+
+            <div className="snapshot-lightbox-footer">
+              <p className="lightbox-caption">{currentSnapshot.caption}</p>
+              <span className="lightbox-counter">
+                {snapshotIdx + 1} of {currentSnapshots.length} Snapshots
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
