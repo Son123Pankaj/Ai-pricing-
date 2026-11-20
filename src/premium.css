@@ -6358,17 +6358,20 @@ img, svg, video, canvas {
 .hero-trust-row {
   display: flex !important;
   align-items: center !important;
-  gap: 14px !important;
+  gap: 8px 14px !important;
   flex-wrap: wrap !important;
+  width: 100% !important;
+  max-width: 530px !important;
 }
 
 .hero-trust-tag {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   gap: 5px !important;
   font-size: 12px !important;
   font-weight: 550 !important;
   color: #C5D8DE !important;
+  white-space: nowrap !important;
 }
 
 .hero-trust-tag svg {
@@ -6377,48 +6380,8 @@ img, svg, video, canvas {
 }
 
 /* ============================================================ */
-/* LARGE RIGHT-SIDE AI CALLER SCENE (55-60% WIDTH, 90-100% HEIGHT) */
+/* RIGHT COLUMN: UPPER AI CALLER PORTRAIT & LOWER VOICE STUDIO  */
 /* ============================================================ */
-.hero-desktop-scene-layer {
-  position: absolute !important;
-  right: 0 !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  width: clamp(520px, 58%, 980px) !important;
-  height: 100% !important;
-  z-index: 1 !important;
-  pointer-events: none !important;
-  overflow: hidden !important;
-  display: block !important;
-}
-
-.hero-desktop-scene-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: right 36% !important;
-  display: block !important;
-  mask-image: 
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 12%, black 28%, black 100%),
-    linear-gradient(to bottom, black 86%, transparent 100%) !important;
-  -webkit-mask-image: 
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 12%, black 28%, black 100%),
-    linear-gradient(to bottom, black 86%, transparent 100%) !important;
-  filter: drop-shadow(0 20px 48px rgba(3, 20, 31, 0.8)) !important;
-}
-
-.hero-desktop-scene-blend {
-  position: absolute !important;
-  inset: 0 !important;
-  background: linear-gradient(to right, #031F2B 0%, transparent 22%) !important;
-  pointer-events: none !important;
-}
-
-.hero-mobile-caller-wrapper {
-  display: none !important;
-}
-
-/* Hero Right Column: Layered Female AI Caller & Voice Studio */
 .hero-right-col {
   display: flex !important;
   flex-direction: column !important;
@@ -6435,20 +6398,30 @@ img, svg, video, canvas {
   flex-direction: column !important;
   align-items: center !important;
   width: 100% !important;
-  max-width: 720px !important;
+  max-width: 620px !important;
   margin: 0 auto !important;
+}
+
+/* Upper Area: Dedicated AI Caller Portrait (Face 100% Clear & Unobstructed) */
+.hero-caller-portrait-stage {
+  position: relative !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  width: 100% !important;
+  z-index: 2 !important;
 }
 
 .hero-girl-halo {
   position: absolute !important;
-  top: -30px !important;
+  top: -10px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: 520px !important;
-  height: 520px !important;
+  width: clamp(280px, 28vw, 380px) !important;
+  height: clamp(280px, 28vw, 380px) !important;
   border-radius: 50% !important;
-  background: radial-gradient(circle, rgba(18, 221, 226, 0.32) 0%, rgba(0, 165, 174, 0.18) 45%, transparent 72%) !important;
-  filter: blur(55px) !important;
+  background: radial-gradient(circle, rgba(18, 221, 226, 0.28) 0%, rgba(0, 165, 174, 0.12) 50%, transparent 72%) !important;
+  filter: blur(40px) !important;
   z-index: 1 !important;
   pointer-events: none !important;
   animation: heroHaloPulse 6s ease-in-out infinite alternate !important;
@@ -6472,37 +6445,38 @@ img, svg, video, canvas {
   justify-content: center !important;
   align-items: flex-end !important;
   width: 100% !important;
-  max-width: 600px !important;
-  margin: 0 auto -105px !important;
+  max-width: 440px !important;
+  margin: 0 auto !important;
 }
 
 .hero-girl-img {
-  width: clamp(340px, 36vw, 540px) !important;
-  height: auto !important;
-  max-height: 460px !important;
-  object-fit: contain !important;
   display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: clamp(260px, 28vh, 330px) !important;
+  object-fit: contain !important;
   filter: 
-    drop-shadow(0 20px 45px rgba(0, 0, 0, 0.7)) 
-    drop-shadow(0 0 35px rgba(18, 221, 226, 0.28)) !important;
-  mask-image: linear-gradient(to bottom, black 82%, transparent 100%) !important;
-  -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%) !important;
+    drop-shadow(0 15px 35px rgba(0, 0, 0, 0.65)) 
+    drop-shadow(0 0 25px rgba(18, 221, 226, 0.24)) !important;
+  mask-image: linear-gradient(to bottom, black 84%, transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, black 84%, transparent 100%) !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease !important;
 }
 
 .hero-girl-frame:hover .hero-girl-img {
-  transform: translateY(-4px) scale(1.015) !important;
+  transform: translateY(-3px) scale(1.02) !important;
   filter: 
-    drop-shadow(0 25px 55px rgba(0, 0, 0, 0.8)) 
-    drop-shadow(0 0 45px rgba(18, 221, 226, 0.38)) !important;
+    drop-shadow(0 20px 45px rgba(0, 0, 0, 0.75)) 
+    drop-shadow(0 0 35px rgba(18, 221, 226, 0.35)) !important;
 }
 
+/* Lower Area: Compact Voice Studio Audio Player (Below Girl, Only Minimal Neck Overlap) */
 .hero-voice-studio-wrap {
   position: relative !important;
   z-index: 10 !important;
   width: 100% !important;
-  max-width: 680px !important;
-  margin-top: clamp(140px, 18vh, 220px) !important;
+  max-width: 600px !important;
+  margin-top: -32px !important;
   scroll-margin-top: 86px !important;
 }
 
@@ -6522,15 +6496,15 @@ img, svg, video, canvas {
   z-index: 1 !important;
 }
 
-/* Voice Studio Card Styling */
+/* Voice Studio Card Styling (Compact, Sleek & Ergonomic) */
 .hero-voice-studio-wrap .voice-library {
   position: relative !important;
   z-index: 1 !important;
   background: linear-gradient(155deg, rgba(6, 45, 56, 0.96) 0%, rgba(3, 31, 43, 0.98) 100%) !important;
   border: 1.5px solid rgba(18, 221, 226, 0.38) !important;
-  border-radius: 26px !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(18, 221, 226, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-  padding: 16px 22px !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 28px rgba(18, 221, 226, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  padding: 13px 18px !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   color: #F8FCFF !important;
@@ -6541,8 +6515,8 @@ img, svg, video, canvas {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  font-size: 10px !important;
-  letter-spacing: 0.14em !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.12em !important;
   font-weight: 700 !important;
   color: #12DDE2 !important;
   margin-bottom: 2px !important;
@@ -6555,36 +6529,36 @@ img, svg, video, canvas {
 }
 
 .hero-voice-studio-wrap .voice-library h3 {
-  font-size: 18px !important;
+  font-size: 16px !important;
   line-height: 1.2 !important;
   font-weight: 700 !important;
   color: #F8FCFF !important;
-  margin: 6px 0 2px !important;
+  margin: 4px 0 2px !important;
   letter-spacing: -0.01em !important;
 }
 
 .hero-voice-studio-wrap .voice-library p {
   color: #C5D8DE !important;
-  font-size: 12px !important;
-  line-height: 1.4 !important;
-  margin: 0 0 10px !important;
+  font-size: 11.5px !important;
+  line-height: 1.35 !important;
+  margin: 0 0 6px !important;
 }
 
 .hero-voice-studio-wrap .voice-tier-tabs {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 4px !important;
+  gap: 3px !important;
   background: rgba(3, 22, 31, 0.85) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 10px !important;
-  padding: 3px !important;
-  margin: 10px 0 !important;
+  border-radius: 9px !important;
+  padding: 2.5px !important;
+  margin: 6px 0 !important;
 }
 
 .hero-voice-studio-wrap .voice-tier-tabs button {
-  min-height: 32px !important;
-  border-radius: 7px !important;
-  font-size: 12px !important;
+  min-height: 28px !important;
+  border-radius: 6px !important;
+  font-size: 11.5px !important;
   font-weight: 600 !important;
   color: #C5D8DE !important;
   background: transparent !important;
@@ -6603,16 +6577,16 @@ img, svg, video, canvas {
 .hero-voice-studio-wrap .voice-now-playing {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
+  gap: 10px !important;
   background: rgba(3, 24, 34, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 12px !important;
-  padding: 8px 14px !important;
+  border-radius: 10px !important;
+  padding: 6px 12px !important;
 }
 
 .hero-voice-studio-wrap .voice-play {
-  width: 38px !important;
-  height: 38px !important;
+  width: 34px !important;
+  height: 34px !important;
   border-radius: 50% !important;
   background: #12DDE2 !important;
   color: #031F2B !important;
@@ -6625,56 +6599,56 @@ img, svg, video, canvas {
 }
 
 .hero-voice-studio-wrap .voice-play svg {
-  width: 18px !important;
-  height: 18px !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 .hero-voice-studio-wrap .voice-now-playing strong {
   color: #F8FCFF !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .hero-voice-studio-wrap .voice-now-playing span {
   color: #12DDE2 !important;
-  font-size: 10.5px !important;
+  font-size: 10px !important;
 }
 
 .hero-voice-studio-wrap .voice-time {
   margin-left: auto !important;
-  font-size: 11.5px !important;
+  font-size: 11px !important;
   color: #C5D8DE !important;
   white-space: nowrap !important;
 }
 
 .hero-voice-studio-wrap .studio-wave-bars {
-  height: 22px !important;
-  margin: 8px 0 2px !important;
+  height: 18px !important;
+  margin: 5px 0 2px !important;
 }
 
 .hero-voice-studio-wrap .voice-seek {
   width: 100% !important;
   accent-color: #12DDE2 !important;
-  height: 14px !important;
+  height: 10px !important;
   cursor: pointer !important;
-  margin: 2px 0 6px !important;
+  margin: 1px 0 3px !important;
 }
 
 .hero-voice-studio-wrap .voice-options {
   display: flex !important;
   flex-wrap: wrap !important;
   align-items: center !important;
-  gap: 6px !important;
-  margin: 8px 0 4px !important;
+  gap: 5px !important;
+  margin: 5px 0 3px !important;
 }
 
 .hero-voice-studio-wrap .voice-options button {
-  min-height: 28px !important;
+  min-height: 25px !important;
   border: 1px solid rgba(18, 221, 226, 0.25) !important;
-  border-radius: 6px !important;
+  border-radius: 5px !important;
   background: rgba(3, 24, 34, 0.4) !important;
   color: #C5D8DE !important;
-  font-size: 11.5px !important;
-  padding: 4px 10px !important;
+  font-size: 11px !important;
+  padding: 3px 8px !important;
   cursor: pointer !important;
   transition: all 0.18s ease !important;
 }
@@ -6692,17 +6666,17 @@ img, svg, video, canvas {
   color: #12DDE2 !important;
   text-decoration: underline !important;
   text-underline-offset: 2px !important;
-  font-size: 11.5px !important;
+  font-size: 11px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
-  padding: 2px 0 !important;
+  padding: 1px 0 !important;
 }
 
 .hero-voice-studio-wrap .voice-status {
   display: block !important;
-  font-size: 10.5px !important;
+  font-size: 10px !important;
   color: #C5D8DE !important;
-  margin: 4px 0 8px !important;
+  margin: 2px 0 5px !important;
 }
 
 .hero-voice-studio-wrap .voice-demo-link {
@@ -6710,13 +6684,13 @@ img, svg, video, canvas {
   justify-content: center !important;
   align-items: center !important;
   gap: 6px !important;
-  min-height: 36px !important;
+  min-height: 33px !important;
   background: linear-gradient(135deg, #12DDE2 0%, #00A5AE 100%) !important;
   color: #031F2B !important;
-  border-radius: 8px !important;
-  font-size: 12.5px !important;
+  border-radius: 7px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
-  padding: 7px 16px !important;
+  padding: 5px 14px !important;
   text-align: center !important;
   text-decoration: none !important;
   box-shadow: 0 3px 12px rgba(18, 221, 226, 0.3) !important;
@@ -6730,10 +6704,10 @@ img, svg, video, canvas {
 }
 
 .hero-voice-studio-wrap .voice-disclaimer {
-  font-size: 10px !important;
-  line-height: 1.35 !important;
+  font-size: 9.5px !important;
+  line-height: 1.3 !important;
   color: #9ab4bd !important;
-  margin: 6px 0 0 !important;
+  margin: 4px 0 0 !important;
 }
 
 /* Tablet & Mobile Hero Layout Adjustments */
@@ -6761,43 +6735,33 @@ img, svg, video, canvas {
   .hero-trust-row {
     justify-content: center !important;
   }
-  .hero-desktop-scene-layer {
-    display: none !important;
-  }
-  .hero-mobile-caller-wrapper {
+  .hero-caller-portrait-stage {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    position: relative !important;
+    justify-content: center !important;
     width: 100% !important;
   }
   .hero-girl-frame {
-    max-width: 480px !important;
-    margin: 10px auto -85px !important;
+    max-width: 380px !important;
+    margin: 0 auto !important;
   }
   .hero-girl-img {
-    width: clamp(300px, 45vw, 440px) !important;
-    max-height: 390px !important;
+    height: clamp(230px, 28vh, 300px) !important;
+    width: auto !important;
   }
   .hero-girl-halo {
-    width: 420px !important;
-    height: 420px !important;
+    width: 320px !important;
+    height: 320px !important;
   }
   .hero-voice-studio-wrap {
-    margin-top: 0 !important;
-    max-width: 100% !important;
+    margin-top: -24px !important;
+    max-width: 580px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-desktop-scene-layer {
-    display: none !important;
-  }
-  .hero-mobile-caller-wrapper {
+  .hero-caller-portrait-stage {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    position: relative !important;
+    justify-content: center !important;
     width: 100% !important;
   }
   .hero-voice-studio-section {
@@ -6833,25 +6797,28 @@ img, svg, video, canvas {
   }
   .hero-trust-row {
     gap: 10px !important;
+    justify-content: center !important;
   }
   .hero-trust-tag {
     font-size: 11.5px !important;
   }
-  /* Female AI Caller image: prominently sized, centered, beautiful halo, zero overflow */
+  /* Female AI Caller image: cleanly framed above card, zero facial overlap */
   .hero-girl-halo {
-    width: 320px !important;
-    height: 320px !important;
+    width: 260px !important;
+    height: 260px !important;
   }
   .hero-girl-frame {
-    max-width: 380px !important;
-    margin: 10px auto -60px !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
   }
   .hero-girl-img {
-    max-height: 310px !important;
-    width: clamp(230px, 68vw, 330px) !important;
+    height: clamp(190px, 26vh, 250px) !important;
+    width: auto !important;
   }
   .hero-voice-studio-wrap {
-    margin-top: 0 !important;
+    margin-top: -16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   /* Remove rotation on mobile so card borders never poke outside screen */
   .voice-studio-decorative-tilt {
@@ -6860,32 +6827,32 @@ img, svg, video, canvas {
     border-radius: 20px !important;
   }
   .hero-voice-studio-wrap .voice-library {
-    padding: 14px 14px !important;
-    border-radius: 20px !important;
+    padding: 12px 14px !important;
+    border-radius: 18px !important;
   }
   .hero-voice-studio-wrap .voice-tier-tabs {
     gap: 2px !important;
     padding: 2px !important;
   }
   .hero-voice-studio-wrap .voice-tier-tabs button {
-    min-height: 30px !important;
+    min-height: 28px !important;
     font-size: 11px !important;
     padding: 2px 4px !important;
   }
   .hero-voice-studio-wrap .voice-now-playing {
-    padding: 7px 10px !important;
+    padding: 6px 10px !important;
     gap: 8px !important;
   }
   .hero-voice-studio-wrap .voice-play {
-    width: 36px !important;
-    height: 36px !important;
+    width: 32px !important;
+    height: 32px !important;
     flex-shrink: 0 !important;
   }
   .hero-voice-studio-wrap .voice-now-playing strong {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
   }
   .hero-voice-studio-wrap .voice-time {
-    font-size: 10.5px !important;
+    font-size: 10px !important;
   }
 }
 
@@ -6897,12 +6864,19 @@ img, svg, video, canvas {
     font-size: 1.6rem !important;
   }
   .hero-girl-halo {
-    width: 250px !important;
-    height: 250px !important;
+    width: 220px !important;
+    height: 220px !important;
   }
   .hero-girl-frame {
-    max-width: 300px !important;
-    margin: 8px auto -45px !important;
+    max-width: 260px !important;
+    margin: 0 auto !important;
+  }
+  .hero-girl-img {
+    height: clamp(160px, 24vh, 200px) !important;
+    width: auto !important;
+  }
+  .hero-voice-studio-wrap {
+    margin-top: -10px !important;
   }
   .hero-girl-img {
     max-height: 250px !important;

@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import VoiceLibrary from './VoiceLibrary';
 import heroCallerImg from '../assets/avyukta-ai-caller-hero.png';
-import heroPremiumImg from '../assets/hero-premium.webp';
 import { getAssetUrl } from '../utils/assetUrl';
 
 const FEATURE_CHIPS = [
@@ -42,7 +41,6 @@ export default function HeroSection({ navigateTo }) {
   };
 
   const callerImgSrc = heroCallerImg || getAssetUrl('/avyukta-ai-caller-hero.png');
-  const desktopSceneSrc = heroPremiumImg || getAssetUrl('/hero-premium.webp');
 
   return (
     <section 
@@ -54,20 +52,6 @@ export default function HeroSection({ navigateTo }) {
       <div className="hero-grid-pattern" aria-hidden="true" />
       <div className="hero-halo-light hero-halo-left" aria-hidden="true" />
       <div className="hero-halo-light hero-halo-right" aria-hidden="true" />
-
-      {/* ========================================================= */}
-      {/* 55-60% RIGHT-SIDE AI CALLER SCENE (Blended Left Edge)     */}
-      {/* ========================================================= */}
-      <div className="hero-desktop-scene-layer" aria-hidden="true">
-        <img 
-          src={desktopSceneSrc}
-          alt=""
-          className="hero-desktop-scene-img"
-          loading="eager"
-          fetchPriority="high"
-        />
-        <div className="hero-desktop-scene-blend" />
-      </div>
 
       <div className="hero-content-container">
         <div className="hero-two-col-layout">
@@ -152,13 +136,13 @@ export default function HeroSection({ navigateTo }) {
           </div>
 
           {/* ========================================================= */}
-          {/* 56% RIGHT COLUMN: Layered Voice Studio & Mobile Visual    */}
+          {/* 54% RIGHT COLUMN: Upper AI Caller & Lower Voice Studio   */}
           {/* ========================================================= */}
           <div className="hero-right-col">
             <div className="hero-stage-stack">
               
-              {/* Mobile/Tablet caller image (Cleanly framed above card) */}
-              <div className="hero-mobile-caller-wrapper">
+              {/* UPPER AREA: Dedicated AI Caller Portrait (Face 100% Unobstructed) */}
+              <div className="hero-caller-portrait-stage">
                 <div className="hero-girl-halo" aria-hidden="true" />
                 <div className="hero-girl-frame">
                   <img 
@@ -171,7 +155,7 @@ export default function HeroSection({ navigateTo }) {
                 </div>
               </div>
 
-              {/* Curved Glowing Voice Studio Card (Below & Layered in Front) */}
+              {/* LOWER AREA: Compact Curved Voice Studio Audio Player */}
               <div id="voice-samples" className="hero-voice-studio-wrap">
                 <div className="voice-studio-decorative-tilt" aria-hidden="true" />
                 <div className="voice-studio-card-inner">
