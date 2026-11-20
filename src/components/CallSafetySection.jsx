@@ -76,7 +76,7 @@ export default function CallSafetySection() {
         {/* Safety Grid */}
         <div className="safety-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
           gap: '24px'
         }}>
           {SAFETY_PILLARS.map((item, idx) => {
