@@ -18,7 +18,6 @@ import { Eyebrow } from './StudioParts';
 import { PLANS, MODELS, SAMPLES, demoUrl, rateLabel } from '../data/offer';
 import { getAssetUrl } from '../utils/assetUrl';
 import { claimPlayback, onOtherPlayback } from '../utils/playback';
-import AiSummarizer from './AiSummarizer';
 
 const CARD_TITLES = {
   bronze: 'AVYUKTA AI BRONZE',
@@ -346,14 +345,6 @@ export default function PlanCards({ navigateTo }) {
         
         <div className="studio-plan-heading">
           <div>
-            <div className="plan-heading-eyebrow-row">
-              <Eyebrow>TRANSPARENT AI VOICE &amp; CALL PRICING</Eyebrow>
-              <AiSummarizer 
-                title="AI Voice & Telephony Pricing Plans"
-                content="Avyukta IntelliCall AI Pricing Plans: Bronze (₹3.50/min), Silver (₹5.00/min), Gold (₹9.00/min), and Platinum (₹11.00/min). Bronze offers standard clear voice assistance and routine FAQ answering. Silver offers 24/7 inbound answering and sub-500ms voice turn cadence. Gold provides multilingual Hindi & English support, automated qualification, and live agent transfer. Platinum delivers studio-grade expressive brand voices, 100+ concurrent channels, and Pan-India STD CLI. Connected calls only billing with zero charge on unanswered calls."
-                label="AI Plan Summary"
-              />
-            </div>
             <h2>AI Pricing <span className="studio-accent">Plans.</span></h2>
             <p>Choose the right voice tier for your callers. Listen to genuine recorded samples, compare verified call features, and request a tailored quote.</p>
           </div>
@@ -364,10 +355,10 @@ export default function PlanCards({ navigateTo }) {
                 type="button" 
                 key={id} 
                 aria-pressed={model === id} 
-                className={model === id ? 'active' : ''} 
+                className={`model-toggle-btn ${model === id ? 'active' : ''}`} 
                 onClick={() => setModel(id)}
               >
-                {offer.label}
+                <span className="toggle-label">{offer.label}</span>
               </button>
             ))}
           </div>

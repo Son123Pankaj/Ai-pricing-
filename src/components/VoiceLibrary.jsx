@@ -40,7 +40,7 @@ const CONTEXT_ROLE_TAGS = {
 };
 
 const time = seconds => `${Math.floor((seconds || 0) / 60)}:${String(Math.floor((seconds || 0) % 60)).padStart(2, '0')}`;
-export default function VoiceLibrary({ compact = false, navigateTo, initialPlan }) {
+export default function VoiceLibrary({ compact = false, navigateTo, initialPlan, isVisible = true }) {
   const owner = useId();
   const audio = useRef(null);
   const request = useRef(0);
@@ -54,6 +54,14 @@ export default function VoiceLibrary({ compact = false, navigateTo, initialPlan 
   const sample = SAMPLES.find(item => item.id === sampleId);
   const options = SAMPLES.filter(item => item.plan === plan);
   const pause = () => { request.current++; audio.current?.pause(); setStatus('paused'); };
+
+  useEffect(() => {
+    if (!isVisible && status === 'playing') {
+      request.current++;
+      audio.current?.pause();
+      setStatus('paused');
+    }
+  }, [isVisible, status]);
   useEffect(() => {
     const element = audio.current;
     const sequence = request;

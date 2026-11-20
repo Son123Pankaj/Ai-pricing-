@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   ArrowUpRight, 
   Phone, 
@@ -7,7 +7,9 @@ import {
   Database, 
   MessageSquare, 
   CheckCircle2, 
-  ShieldCheck 
+  ShieldCheck,
+  Headphones,
+  X
 } from 'lucide-react';
 import VoiceLibrary from './VoiceLibrary';
 import heroCallerImg from '../assets/avyukta-ai-caller-hero.png';
@@ -21,6 +23,44 @@ const FEATURE_CHIPS = [
 ];
 
 export default function HeroSection({ navigateTo }) {
+  const [isVoiceOpen, setIsVoiceOpen] = useState(false);
+  const leaveTimerRef = useRef(null);
+
+  const handleMouseEnter = useCallback(() => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+    setIsVoiceOpen(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
+    leaveTimerRef.current = setTimeout(() => {
+      setIsVoiceOpen(false);
+    }, 280);
+  }, []);
+
+  const handleToggle = useCallback(() => {
+    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
+    setIsVoiceOpen(prev => !prev);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
+    setIsVoiceOpen(false);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isVoiceOpen) {
+        handleClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isVoiceOpen, handleClose]);
+
   const handleNav = (e, path) => {
     e.preventDefault();
     if (path.startsWith('/#') || path.startsWith('#')) {
@@ -136,12 +176,16 @@ export default function HeroSection({ navigateTo }) {
           </div>
 
           {/* ========================================================= */}
-          {/* 54% RIGHT COLUMN: Upper AI Caller & Lower Voice Studio   */}
+          {/* 54% RIGHT COLUMN: Enlarged AI Caller & Interactive Studio */}
           {/* ========================================================= */}
           <div className="hero-right-col">
-            <div className="hero-stage-stack">
+            <div 
+              className={`hero-interactive-stage ${isVoiceOpen ? 'overlay-active' : ''}`}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               
-              {/* UPPER AREA: Dedicated AI Caller Portrait (Face 100% Unobstructed) */}
+              {/* UPPER AREA: Enlarged AI Caller Portrait (25-40% Scale Increase, 100% Unobstructed) */}
               <div className="hero-caller-portrait-stage">
                 <div className="hero-girl-halo" aria-hidden="true" />
                 <div className="hero-girl-frame">
@@ -155,11 +199,50 @@ export default function HeroSection({ navigateTo }) {
                 </div>
               </div>
 
-              {/* LOWER AREA: Compact Curved Voice Studio Audio Player */}
-              <div id="voice-samples" className="hero-voice-studio-wrap">
+              {/* TRIGGER AREA: Premium "Explore AI Voices" Button below Girl */}
+              <div className="hero-trigger-wrap">
+                <button
+                  type="button"
+                  className={`hero-voice-preview-trigger ${isVoiceOpen ? 'active' : ''}`}
+                  onClick={handleToggle}
+                  aria-expanded={isVoiceOpen}
+                  aria-controls="voice-samples"
+                  aria-label="Explore AI Voices"
+                >
+                  <span className="trigger-icon-pill" aria-hidden="true">
+                    <Headphones size={17} />
+                  </span>
+                  <span className="trigger-label">Explore AI Voices</span>
+                  <span className="trigger-badge-live">Live Preview</span>
+                </button>
+              </div>
+
+              {/* OVERLAY AREA: Full Voice Studio Card displayed over the Girl on Hover / Tap */}
+              <div 
+                id="voice-samples" 
+                className={`hero-voice-studio-wrap hero-voice-studio-overlay ${isVoiceOpen ? 'is-open' : ''}`}
+                role="region"
+                aria-label="Interactive AI Voice Studio"
+                aria-hidden={!isVoiceOpen}
+              >
                 <div className="voice-studio-decorative-tilt" aria-hidden="true" />
                 <div className="voice-studio-card-inner">
-                  <VoiceLibrary navigateTo={navigateTo} />
+                  <div className="overlay-top-utility-bar">
+                    <div className="overlay-badge-wrap">
+                      <span className="overlay-live-dot" aria-hidden="true" />
+                      <span className="overlay-badge-text">VOICE STUDIO OVERLAY</span>
+                    </div>
+                    <button
+                      type="button"
+                      className="overlay-dismiss-btn"
+                      onClick={handleClose}
+                      aria-label="Close Voice Studio"
+                      title="Close Voice Studio (Esc)"
+                    >
+                      <X size={15} />
+                    </button>
+                  </div>
+                  <VoiceLibrary navigateTo={navigateTo} isVisible={isVoiceOpen} />
                 </div>
               </div>
 
