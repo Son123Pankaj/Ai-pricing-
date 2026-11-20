@@ -31,7 +31,7 @@ const CATEGORIES = [
     icon: Workflow,
     fullForm: 'Business Process Automation (BPA)',
     image: '/avyukta-platform-workflow.png',
-    snapshotCount: 3
+    snapshotCount: 4
   },
   { 
     id: 'crm', 
@@ -48,8 +48,8 @@ const CATEGORIES = [
     subtitle: 'Operations & Monitoring', 
     icon: LayoutDashboard,
     fullForm: 'Command Center',
-    image: '/command-center-operations.jpg',
-    snapshotCount: 3
+    image: '/avyukta-command-center-vision.png',
+    snapshotCount: 4
   },
   { 
     id: 'sales', 
@@ -57,8 +57,8 @@ const CATEGORIES = [
     subtitle: 'Pipeline & Deals', 
     icon: TrendingUp,
     fullForm: 'Sales Management & Customer Journey (Sales)',
-    image: '/sales-management-dashboard.jpg',
-    snapshotCount: 3
+    image: '/avyukta-sales-crm-pipeline.png',
+    snapshotCount: 4
   },
 ];
 
@@ -74,17 +74,24 @@ const CATEGORY_SNAPSHOTS = {
     },
     {
       id: 1,
-      label: '2. Process Journey Map',
-      src: '/bpa-workflow.jpg',
-      alt: 'Avyukta Business Process Automation customer journey flow',
-      caption: 'End-to-end customer journey logic: automated lead dialer, qualification scoring, and disposition updates.'
+      label: '2. Inbound Journey Map',
+      src: '/avyukta-inbound-journey-map.jpg',
+      alt: 'Avyukta Inbound Customer Journey Map: 90% automated by AI from lead ingestion to nurturing loop and closure',
+      caption: 'End-to-end customer journey logic: multi-channel ingestion, immediate AI assistant response, CRM updates, and automated nurturing.'
     },
     {
       id: 2,
-      label: '3. Automation Rules & Actions',
-      src: '/features-automation.jpg',
-      alt: 'Avyukta automation rules, trigger schedules and API integrations',
-      caption: 'Trigger conditional API webhooks, schedule recurring campaigns, and synchronize with 50+ enterprise CRMs.'
+      label: '3. Agentic AI CX Platform',
+      src: '/avyukta-agentic-flow-builder.png',
+      alt: 'Avyukta & Datamatics Agentic AI Module: SaaS CX Journey Platform with visual flow builder and knowledge base',
+      caption: 'Visual conversational flow builder: interrupt detection, knowledge base ingestion, and bidirectional Avyukta CRM synchronization.'
+    },
+    {
+      id: 3,
+      label: '4. Stage-Based Automation',
+      src: '/avyukta-bpa-stage-flow.png',
+      alt: 'Avyukta AI BPA Platform 8-stage omnichannel automation workflow',
+      caption: '8-stage execution pipeline: from entry gateway to AI dialer follow-up, calendar booking, and commercial proposal closure.'
     }
   ],
   crm: [
@@ -105,62 +112,76 @@ const CATEGORY_SNAPSHOTS = {
     {
       id: 2,
       label: '3. Agent Extension Directory',
-      src: '/crm-employee-dashboard.jpg',
-      alt: 'Avyukta CRM employee workspace, activity insights and telephony extension directory',
+      src: '/avyukta-crm-live-workspace.png',
+      alt: 'Avyukta Intellicall live employee insights dashboard and integrated WebRTC softphone',
       caption: 'Multi-seat extension management, live SIP registration monitoring, and agent productivity KPIs.'
     },
     {
       id: 3,
-      label: '4. Contact Center Queues',
-      src: '/crm-contact-center-channels.jpg',
-      alt: 'Avyukta contact center channels and intelligent skill-based routing',
-      caption: 'Skill-based ACD routing, inbound toll-free IVR queues, and multi-channel campaign dispatch.'
+      label: '4. Performance & Work Matrix',
+      src: '/avyukta-crm-performance-matrix.png',
+      alt: 'Avyukta CRM: Plan, Assign, Execute, Assess, Grow with KRA, SOD and Happy Code',
+      caption: 'Team success engine: track Key Result Areas (KRA), Schedule of the Day (SOD), task completion, and Happy Code recognition.'
     }
   ],
   'command-center': [
     {
       id: 0,
-      label: '1. Live Operations Console',
-      src: '/command-center-operations.jpg',
-      alt: 'Avyukta live operations command center, active calls and SIP trunk NOC',
-      caption: 'Mission-control NOC: track concurrent voice channels, live jitter/packet loss, and carrier trunk uptime.'
+      label: '1. AI Vision Floor Operations',
+      src: '/avyukta-command-center-vision.png',
+      alt: 'Avyukta Command Center live AI computer vision floor monitoring and agent workstation tracking',
+      caption: 'Mission-control NOC: AI computer vision detection of active agents, supervisor audits, call dwell times, and system health status.'
     },
     {
       id: 1,
-      label: '2. 99.99% Carrier Telecom NOC',
-      src: '/about-telecom-noc.jpg',
-      alt: 'Avyukta 99.99% Carrier-grade telecom network operations center',
-      caption: 'Tier-3 telephony infrastructure with sub-500ms voice cadence and redundant Pan-India STD CLI routes.'
+      label: '2. Hybrid Telephony Architecture',
+      src: '/avyukta-hybrid-telephony-architecture.png',
+      alt: 'Avyukta Hybrid Call Center Architecture: 3 on-premise dialer servers connected via VPN to cloud admin server',
+      caption: 'Enterprise hybrid architecture: on-premise dialer clusters with local PRI/SIP trunks linked via encrypted VPN to cloud admin & reporting.'
     },
     {
       id: 2,
-      label: '3. High-Availability Core',
-      src: '/telecom-datacenter.jpg',
-      alt: 'Avyukta enterprise datacenter and secure telephony switching cluster',
-      caption: 'Enterprise SIP cluster engineered for zero runaway bill guarantee and strict auto-disconnect safety.'
+      label: '3. Pan-India Telecom Network',
+      src: '/avyukta-pan-india-network-map.png',
+      alt: 'Avyukta Pan-India Telecom Footprint across 11 countries, 700+ live centers, and 4000+ installations',
+      caption: 'Pan-India telecom presence: redundant carrier switching hubs across all major metro and Tier-2 business corridors.'
+    },
+    {
+      id: 3,
+      label: '4. Live Operations Console',
+      src: '/command-center-operations.jpg',
+      alt: 'Avyukta live operations command center, active calls and SIP trunk NOC',
+      caption: 'Live trunk monitor: sub-500ms voice cadence, zero runaway bill protection, and continuous telecom SLA tracking.'
     }
   ],
   sales: [
     {
       id: 0,
-      label: '1. Sales Pipeline & Velocity',
-      src: '/sales-management-dashboard.jpg',
-      alt: 'Avyukta sales management pipeline, conversion stages and deal analytics',
+      label: '1. Sales Pipeline & Deals',
+      src: '/avyukta-sales-crm-pipeline.png',
+      alt: 'Avyukta Sales CRM live deal pipeline, disposition management, and WON status tracking',
       caption: 'Real-time deal velocity tracker: auto-classify inbound leads into Hot, Warm, and Cold with automated next actions.'
     },
     {
       id: 1,
-      label: '2. Outbound ROI & Unit Economics',
-      src: '/call-center-profit.jpg',
-      alt: 'Avyukta call center ROI analysis and per-minute telephony economics',
-      caption: 'Measurable cost savings: compare traditional call center agent overhead versus AI voice automation.'
+      label: '2. SIP Channel Pricing Slabs',
+      src: '/avyukta-telephony-pricing-slabs.png',
+      alt: 'Avyukta Intellicall 080 CLI SIP Channel offer slabs and transparent pricing schedule',
+      caption: 'Transparent channel economics: volume-tiered 080 CLI SIP trunks from 4 to 30+ channels with optional AI Caller addons.'
     },
     {
       id: 2,
-      label: '3. Predictive Cloud Dialer Console',
-      src: '/dialer-india-hero.jpg',
-      alt: 'Avyukta high-velocity predictive dialing console and campaign manager',
-      caption: 'Blast 100+ concurrent channels with automated AMD (Answering Machine Detection) and live agent transfer.'
+      label: '3. Automated Proposal Engine',
+      src: '/avyukta-automated-proposals.png',
+      alt: 'Avyukta CRM automated proposal generation, template compilation and client delivery',
+      caption: 'Automated proposal workflow: merge CRM client data into custom service quotes, send via WhatsApp/Email, and track e-signatures.'
+    },
+    {
+      id: 3,
+      label: '4. Outbound ROI & Unit Economics',
+      src: '/call-center-profit.jpg',
+      alt: 'Avyukta call center ROI analysis and per-minute telephony economics',
+      caption: 'Measurable cost savings: compare traditional call center agent overhead versus AI voice automation.'
     }
   ]
 };
@@ -253,7 +274,7 @@ export default function DynamicPricingSection({ navigateTo }) {
             <Eyebrow>DYNAMIC PLATFORM &amp; PRICING WORKSPACE</Eyebrow>
             <span className="snapshot-total-pill">
               <Camera size={13} />
-              <span>13 Live Product Snapshots · Hover to Preview</span>
+              <span>16 Live Product Snapshots · Hover to Preview</span>
             </span>
           </div>
           <h2 className="dynamic-section-title">
