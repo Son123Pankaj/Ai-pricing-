@@ -348,20 +348,6 @@ export default function PlanCards({ navigateTo }) {
             <h2>AI Pricing <span className="studio-accent">Plans.</span></h2>
             <p>Choose the right voice tier for your callers. Listen to genuine recorded samples, compare verified call features, and request a tailored quote.</p>
           </div>
-
-          <div className="studio-plan-toggle" role="group" aria-label="Pricing model toggle">
-            {Object.entries(MODELS).map(([id, offer]) => (
-              <button 
-                type="button" 
-                key={id} 
-                aria-pressed={model === id} 
-                className={`model-toggle-btn ${model === id ? 'active' : ''}`} 
-                onClick={() => setModel(id)}
-              >
-                <span className="toggle-label">{offer.label}</span>
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* QoS Value Guidance Banner (Sir Review Point 3 & 4) */}
