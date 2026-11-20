@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import VoiceLibrary from './VoiceLibrary';
 import heroCallerImg from '../assets/avyukta-ai-caller-hero.png';
+import heroPremiumImg from '../assets/hero-premium.webp';
 import { getAssetUrl } from '../utils/assetUrl';
 
 const FEATURE_CHIPS = [
@@ -41,6 +42,7 @@ export default function HeroSection({ navigateTo }) {
   };
 
   const callerImgSrc = heroCallerImg || getAssetUrl('/avyukta-ai-caller-hero.png');
+  const desktopSceneSrc = heroPremiumImg || getAssetUrl('/hero-premium.webp');
 
   return (
     <section 
@@ -52,6 +54,20 @@ export default function HeroSection({ navigateTo }) {
       <div className="hero-grid-pattern" aria-hidden="true" />
       <div className="hero-halo-light hero-halo-left" aria-hidden="true" />
       <div className="hero-halo-light hero-halo-right" aria-hidden="true" />
+
+      {/* ========================================================= */}
+      {/* 55-60% RIGHT-SIDE AI CALLER SCENE (Blended Left Edge)     */}
+      {/* ========================================================= */}
+      <div className="hero-desktop-scene-layer" aria-hidden="true">
+        <img 
+          src={desktopSceneSrc}
+          alt=""
+          className="hero-desktop-scene-img"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <div className="hero-desktop-scene-blend" />
+      </div>
 
       <div className="hero-content-container">
         <div className="hero-two-col-layout">
@@ -136,26 +152,26 @@ export default function HeroSection({ navigateTo }) {
           </div>
 
           {/* ========================================================= */}
-          {/* 50% RIGHT COLUMN: Layered Female AI Caller & Voice Studio */}
+          {/* 56% RIGHT COLUMN: Layered Voice Studio & Mobile Visual    */}
           {/* ========================================================= */}
           <div className="hero-right-col">
             <div className="hero-stage-stack">
               
-              {/* Layer 1: Circular Glowing Teal Halo behind Girl */}
-              <div className="hero-girl-halo" aria-hidden="true" />
-
-              {/* Layer 2: Female AI Caller Image (Upper-Right) */}
-              <div className="hero-girl-frame">
-                <img 
-                  src={callerImgSrc}
-                  alt="Avyukta AI Caller Specialist with Headset"
-                  className="hero-girl-img"
-                  loading="eager"
-                  fetchPriority="high"
-                />
+              {/* Mobile/Tablet caller image (Cleanly framed above card) */}
+              <div className="hero-mobile-caller-wrapper">
+                <div className="hero-girl-halo" aria-hidden="true" />
+                <div className="hero-girl-frame">
+                  <img 
+                    src={callerImgSrc}
+                    alt="Avyukta AI Caller Specialist with Headset"
+                    className="hero-girl-img"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
               </div>
 
-              {/* Layer 3: Curved Glowing Voice Studio Card (Below & Layered in Front) */}
+              {/* Curved Glowing Voice Studio Card (Below & Layered in Front) */}
               <div id="voice-samples" className="hero-voice-studio-wrap">
                 <div className="voice-studio-decorative-tilt" aria-hidden="true" />
                 <div className="voice-studio-card-inner">
